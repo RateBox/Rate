@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ hostname: process.env.IMAGE_HOSTNAME || "localhost" }],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: process.env.IMAGE_HOSTNAME || "localhost",
+        port: process.env.IMAGE_PORT || "1337",
+        pathname: "/uploads/**",
+      },
+    ],
   },
   pageExtensions: ["ts", "tsx"],
   async redirects() {
