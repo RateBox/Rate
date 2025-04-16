@@ -11,6 +11,8 @@ services:
       - "5432:5432"
     volumes:
       - rate_pgdata:/var/lib/postgresql/data
+    networks:
+      - rate-network
 
   rate-strapi:
     build: ./strapi
@@ -34,6 +36,9 @@ services:
       - ./strapi/package.json:/opt/app/package.json
       - ./strapi/yarn.lock:/opt/app/yarn.lock
       - ./strapi/.env:/opt/app/.env
+      - ./strapi/public/uploads:/opt/app/public/uploads  # <-- mount volume ảnh uploads
+    networks:
+      - rate-network
 
   rate-next:
     build: ./next
@@ -43,12 +48,25 @@ services:
       - rate-strapi
     ports:
       - "3001:3001"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:1337
+      NEXT_INTERNAL_API_URL: http://rate-strapi:1337
+      NEXT_PUBLIC_STRAPI_API_URL: http://localhost:1337
+      IMAGE_HOSTNAME: localhost
+      IMAGE_PORT: 1337
     volumes:
       - ./next/src:/opt/app/src
       - ./next/public:/opt/app/public
       - ./next/package.json:/opt/app/package.json
       - ./next/yarn.lock:/opt/app/yarn.lock
       - ./next/.env:/opt/app/.env
+      - ./next/next.config.mjs:/opt/app/next.config.mjs
+    networks:
+      - rate-network
+
+networks:
+  rate-network:
+    driver: bridge
 
 volumes:
   rate_pgdata:

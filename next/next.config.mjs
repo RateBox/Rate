@@ -1,11 +1,17 @@
-/** @type {import('next').NextConfig} */
+// next.config.mjs
 const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: process.env.IMAGE_HOSTNAME || "localhost",
-        port: process.env.IMAGE_PORT || "1337",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "http",
+        hostname: "rate-strapi",
+        port: "1337",
         pathname: "/uploads/**",
       },
     ],
