@@ -36,7 +36,7 @@ services:
       - ./strapi/package.json:/opt/app/package.json
       - ./strapi/yarn.lock:/opt/app/yarn.lock
       - ./strapi/.env:/opt/app/.env
-      - ./strapi/public/uploads:/opt/app/public/uploads  # <-- mount volume ảnh uploads
+      - strapi_public:/opt/app/public
     networks:
       - rate-network
 
@@ -70,3 +70,4 @@ networks:
 
 volumes:
   rate_pgdata:
+  strapi_public:

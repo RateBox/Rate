@@ -4,22 +4,43 @@
   "info": {
     "singularName": "item-page",
     "pluralName": "item-pages",
-    "displayName": "Items"
+    "displayName": "Items",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
   },
   "attributes": {
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "heading": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "sub_heading": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "dynamic_zone": {
       "type": "dynamiczone",
@@ -36,7 +57,12 @@
         "dynamic-zone.faq",
         "dynamic-zone.cta",
         "dynamic-zone.brands"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

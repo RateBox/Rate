@@ -40,6 +40,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::item.item"
+    },
+    "directory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::directory.directory",
+      "inversedBy": "categories"
     }
   }
 }
