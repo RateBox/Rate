@@ -4,5 +4,4 @@
 
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreController('api::item.item' as 'api::item.item');
-
+export default factories.createCoreController('api::item.item');
