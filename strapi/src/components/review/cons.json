@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_review_cons",
+  "info": {
+    "displayName": "Cons",
+    "icon": "check",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}

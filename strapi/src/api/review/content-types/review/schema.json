@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Review",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "item": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::item.item",
+      "inversedBy": "review"
+    },
+    "reviewer_name": {
+      "type": "string"
+    },
+    "reviewer_type": {
+      "type": "enumeration",
+      "enum": [
+        "user",
+        "expert"
+      ]
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 10
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "is_approved": {
+      "type": "boolean"
+    },
+    "reviewed_at": {
+      "type": "datetime"
+    },
+    "pros": {
+      "type": "component",
+      "repeatable": true,
+      "component": "review.pros"
+    },
+    "cons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "review.cons"
+    }
+  }
+}

@@ -26,6 +26,20 @@
       "relation": "manyToMany",
       "target": "api::article.article",
       "mappedBy": "categories"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "slug": {
+      "type": "uid"
+    },
+    "items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item.item"
     }
   }
 }

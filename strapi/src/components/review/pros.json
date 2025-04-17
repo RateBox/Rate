@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_review_pros",
+  "info": {
+    "displayName": "Pros",
+    "icon": "check",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}
