@@ -33,3 +33,17 @@ export interface Product {
   images: any[];
   categories?: any[];
 };
+
+export interface Item {
+  id: number;
+  title: string;
+  slug: string;
+  description: string;
+  minPrice: number;
+  maxPrice: number;
+  category: any;
+  featured?: boolean;
+  thumbnail: any;
+  gallery: any[];
+  reviews?: any[];
+}

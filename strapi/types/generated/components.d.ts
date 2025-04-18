@@ -352,6 +352,30 @@ export interface ItemsRayItems extends Struct.ComponentSchema {
   };
 }
 
+export interface ReviewCons extends Struct.ComponentSchema {
+  collectionName: 'components_review_cons';
+  info: {
+    description: '';
+    displayName: 'Cons';
+    icon: 'check';
+  };
+  attributes: {
+    text: Schema.Attribute.String;
+  };
+}
+
+export interface ReviewPros extends Struct.ComponentSchema {
+  collectionName: 'components_review_pros';
+  info: {
+    description: '';
+    displayName: 'Pros';
+    icon: 'check';
+  };
+  attributes: {
+    text: Schema.Attribute.String;
+  };
+}
+
 export interface SharedButton extends Struct.ComponentSchema {
   collectionName: 'components_shared_buttons';
   info: {
@@ -530,6 +554,8 @@ declare module '@strapi/strapi' {
       'items.input': ItemsInput;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.ray-items': ItemsRayItems;
+      'review.cons': ReviewCons;
+      'review.pros': ReviewPros;
       'shared.button': SharedButton;
       'shared.form': SharedForm;
       'shared.launches': SharedLaunches;
