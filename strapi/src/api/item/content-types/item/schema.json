@@ -11,12 +11,11 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
     },
     "slug": {
-      "type": "uid",
-      "targetField": "name"
+      "type": "uid"
     },
     "category": {
       "type": "relation",
@@ -51,17 +50,26 @@
     "is_active": {
       "type": "boolean"
     },
-    "review": {
+    "reviews": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::review.review",
-      "mappedBy": "item"
+      "relation": "oneToMany",
+      "target": "api::review.review"
     },
     "minPrice": {
       "type": "decimal"
     },
     "maxPrice": {
       "type": "decimal"
+    },
+    "dynamic_zone": {
+      "type": "dynamiczone",
+      "components": [
+        "dynamic-zone.related-products",
+        "dynamic-zone.cta"
+      ]
+    },
+    "featured": {
+      "type": "boolean"
     }
   }
 }

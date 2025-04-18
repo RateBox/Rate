@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "item": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::item.item",
-      "inversedBy": "review"
-    },
     "reviewer_name": {
       "type": "string"
     },
@@ -51,6 +45,9 @@
       "type": "component",
       "repeatable": true,
       "component": "review.cons"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }
