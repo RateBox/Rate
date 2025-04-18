@@ -1,73 +1,74 @@
+version: '3.8'
+
 services:
   rate-postgres:
-    image: postgres:latest
+    image: postgres:15-alpine
     container_name: rate-postgres
-    restart: always
-    environment:
-      POSTGRES_USER: joy
-      POSTGRES_PASSWORD: rate@123!
-      POSTGRES_DB: rate
-    ports:
-      - "5432:5432"
+    env_file:
+      - ./strapi/.env
     volumes:
-      - rate_pgdata:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - rate-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   rate-strapi:
-    build: ./strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+      target: development
     container_name: rate-strapi
-    restart: always
-    depends_on:
-      - rate-postgres
+    env_file:
+      - ./strapi/.env
+    volumes:
+      - ./strapi:/opt/app
+      - strapi_node_modules:/opt/app/node_modules
     ports:
       - "1337:1337"
-    environment:
-      DATABASE_CLIENT: postgres
-      DATABASE_HOST: rate-postgres
-      DATABASE_PORT: 5432
-      DATABASE_NAME: rate
-      DATABASE_USERNAME: joy
-      DATABASE_PASSWORD: rate@123!
-      API_TOKEN_SALT: tobemodified
-    volumes:
-      - ./strapi/config:/opt/app/config
-      - ./strapi/src:/opt/app/src
-      - ./strapi/package.json:/opt/app/package.json
-      - ./strapi/yarn.lock:/opt/app/yarn.lock
-      - ./strapi/.env:/opt/app/.env
-      - strapi_public:/opt/app/public
+    depends_on:
+      rate-postgres:
+        condition: service_healthy
     networks:
       - rate-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1337/admin"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   rate-next:
-    build: ./next
+    build:
+      context: ./next
+      dockerfile: Dockerfile
+      target: development
     container_name: rate-next
-    restart: always
-    depends_on:
-      - rate-strapi
-    ports:
-      - "3001:3001"
-    environment:
-      NEXT_PUBLIC_API_URL: http://localhost:1337
-      NEXT_INTERNAL_API_URL: http://rate-strapi:1337
-      NEXT_PUBLIC_STRAPI_API_URL: http://localhost:1337
-      IMAGE_HOSTNAME: localhost
-      IMAGE_PORT: 1337
+    env_file:
+      - ./next/.env
     volumes:
-      - ./next/src:/opt/app/src
-      - ./next/public:/opt/app/public
-      - ./next/package.json:/opt/app/package.json
-      - ./next/yarn.lock:/opt/app/yarn.lock
-      - ./next/.env:/opt/app/.env
-      - ./next/next.config.mjs:/opt/app/next.config.mjs
+      - ./next:/opt/app
+      - next_node_modules:/opt/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      rate-strapi:
+        condition: service_healthy
     networks:
       - rate-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 networks:
   rate-network:
-    driver: bridge
+    name: ratebox_rate-network
 
 volumes:
-  rate_pgdata:
-  strapi_public:
+  postgres_data:
+  strapi_node_modules:
+  next_node_modules:

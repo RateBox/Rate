@@ -1,0 +1,88 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  DOCKER_REGISTRY: ghcr.io
+  DOCKER_IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.DOCKER_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Strapi .env file
+        run: |
+          cat > ./strapi/.env << EOF
+          DATABASE_CLIENT=postgres
+          DATABASE_HOST=rate-postgres
+          DATABASE_PORT=5432
+          DATABASE_NAME=${{ secrets.POSTGRES_DB }}
+          DATABASE_USERNAME=${{ secrets.POSTGRES_USER }}
+          DATABASE_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+          JWT_SECRET=${{ secrets.STRAPI_JWT_SECRET }}
+          ADMIN_JWT_SECRET=${{ secrets.STRAPI_ADMIN_JWT_SECRET }}
+          APP_KEYS=${{ secrets.STRAPI_APP_KEYS }}
+          API_TOKEN_SALT=${{ secrets.STRAPI_API_TOKEN_SALT }}
+          TRANSFER_TOKEN_SALT=${{ secrets.STRAPI_TRANSFER_TOKEN_SALT }}
+          HOST=0.0.0.0
+          PORT=1337
+          NODE_ENV=production
+          EOF
+
+      - name: Create Next.js .env file
+        run: |
+          cat > ./next/.env << EOF
+          NEXT_PUBLIC_STRAPI_API_URL=${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
+          NODE_ENV=production
+          EOF
+
+      - name: Build and push Strapi
+        uses: docker/build-push-action@v4
+        with:
+          context: ./strapi
+          push: true
+          tags: ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_IMAGE_NAME }}/strapi:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NODE_ENV=production
+
+      - name: Build and push Next.js
+        uses: docker/build-push-action@v4
+        with:
+          context: ./next
+          push: true
+          tags: ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_IMAGE_NAME }}/next:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            NODE_ENV=production
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production..."
+          # Add your deployment commands here 
