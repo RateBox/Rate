@@ -113,6 +113,8 @@ This installs dependencies, builds your project, and starts your server. You're 
 
 # RateBox
 
+[![CI/CD](https://github.com/RateBox/Rate/actions/workflows/main.yml/badge.svg)](https://github.com/RateBox/Rate/actions/workflows/main.yml)
+
 A modern review and rating platform built with:
 - Strapi Headless CMS
 - Next.js Frontend
