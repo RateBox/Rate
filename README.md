@@ -64,7 +64,7 @@ Navigate to your `./my-projects/launchpad/next` folder by running `cd next` from
 yarn && yarn build && yarn start
 ```
 
-This installs dependencies, builds your project, and starts your server. You’re now a spacefaring content master!
+This installs dependencies, builds your project, and starts your server. You're now a spacefaring content master!
 
 ## Features Overview ✨
 
@@ -72,7 +72,7 @@ This installs dependencies, builds your project, and starts your server. You’r
 
 <br />
 
-**An intuitive, minimal editor** The editor allows you to pull in dynamic blocks of content. It’s 100% open-source, and it’s fully extensible.<br />
+**An intuitive, minimal editor** The editor allows you to pull in dynamic blocks of content. It's 100% open-source, and it's fully extensible.<br />
 **Media Library** Upload images, video or any files and crop and optimize their sizes, without quality loss.<br />
 **Flexible content management** Build any type of category, section, format or flow to adapt to your needs. <br />
 **Sort and Filter** Built-in sorting and filtering: you can manage thousands of entries without effort.<br />
@@ -110,3 +110,43 @@ This installs dependencies, builds your project, and starts your server. You’r
 - The Strapi application contains a postinstall script that will regenerate an uuid for the project in order to get some anonymous usage information concerning this demo. You can disable it by removing the uuid inside the `./strapi/packages.json` file.
 
 - The Strapi application contains a patch for the @strapi/admin package. It is only necessary for the hosted demos since we automatically create the Super Admin users for them when they request this demo on our website.
+
+# RateBox
+
+A modern review and rating platform built with:
+- Strapi Headless CMS
+- Next.js Frontend
+- PostgreSQL Database
+- Docker Containerization
+
+## Development
+
+```bash
+# Start development environment
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop environment
+docker-compose down
+```
+
+## Environment Variables
+
+The project uses environment variables for configuration. Check `.env.example` files in both `strapi/` and `next/` directories.
+
+## CI/CD
+
+The project uses GitHub Actions for continuous integration and deployment. The workflow:
+- Builds Docker images
+- Pushes to GitHub Container Registry
+- Deploys to production (when merged to main)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
