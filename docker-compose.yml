@@ -1,8 +1,11 @@
+name: rate
+
 version: '3.8'
 
 services:
   rate-postgres:
-    image: postgres:latest
+    image: rate-postgres:latest
+    build: ./postgres
     container_name: rate-postgres
     restart: always
     environment:
@@ -18,6 +21,7 @@ services:
 
   rate-strapi:
     build: ./strapi
+    image: rate-strapi:latest
     container_name: rate-strapi
     restart: always
     depends_on:
@@ -32,18 +36,22 @@ services:
       DATABASE_USERNAME: joy
       DATABASE_PASSWORD: rate@123!
       API_TOKEN_SALT: tobemodified
+      ADMIN_JWT_SECRET: ratebox-admin-jwt-secret
+      JWT_SECRET: ratebox-jwt-secret
+      APP_KEYS: key1,key2,key3,key4
+      TRANSFER_TOKEN_SALT: ratebox-transfer-token-salt
     volumes:
       - ./strapi/config:/opt/app/config
       - ./strapi/src:/opt/app/src
       - ./strapi/package.json:/opt/app/package.json
       - ./strapi/yarn.lock:/opt/app/yarn.lock
-      - ./strapi/.env:/opt/app/.env
       - ./strapi/public/uploads:/opt/app/public/uploads
     networks:
       - rate-network
 
   rate-next:
     build: ./next
+    image: rate-next:latest
     container_name: rate-next
     restart: always
     depends_on:
@@ -72,3 +80,4 @@ networks:
 
 volumes:
   rate_pgdata:
+    name: rate_pgdata

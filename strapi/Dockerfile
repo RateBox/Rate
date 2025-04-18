@@ -8,10 +8,6 @@ RUN yarn install --ignore-engines
 
 COPY . .
 
-RUN chown -R node:node /opt/app
-
-USER node
-
 EXPOSE 1337
 
 ENV NODE_ENV=development

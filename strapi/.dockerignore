@@ -1,0 +1,13 @@
+.git
+.gitignore
+.tmp
+.cache
+node_modules
+backup
+*.log
+.env
+.env.*
+dist
+build
+README.md
+public/uploads/* 
