@@ -1,83 +1,72 @@
 name: rate
 
-version: '3.8'
-
 services:
-  rate-postgres:
-    image: rate-postgres:latest
-    build: ./postgres
-    container_name: rate-postgres
+  # Service PostgreSQL - Cơ sở dữ liệu
+  rateDB:
+    image: postgres  # Tên image sẽ được build
+    build:
+      context: ./postgres  # Thư mục chứa Dockerfile
+      dockerfile: Dockerfile  # Tên file Dockerfile
+    container_name: rateDB
     restart: always
-    environment:
-      POSTGRES_USER: joy
-      POSTGRES_PASSWORD: rate@123!
-      POSTGRES_DB: rate
+    env_file:  # Sử dụng file .env
+      - ./postgres/.env
     ports:
       - "5432:5432"
     volumes:
-      - rate_pgdata:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data  # Mount volume cho PostgreSQL
     networks:
-      - rate-network
+      - rate  # Kết nối mạng
 
-  rate-strapi:
-    build: ./strapi
-    image: rate-strapi:latest
-    container_name: rate-strapi
+  # Service Strapi - Backend CMS
+  strapi:
+    image: strapi  # Tên image sẽ được build
+    build:
+      context: ./strapi  # Thư mục chứa Dockerfile
+      dockerfile: Dockerfile  # Tên file Dockerfile
+    container_name: strapi
     restart: always
-    depends_on:
-      - rate-postgres
+    env_file:  # Sử dụng file .env
+      - ./strapi/.env
     ports:
-      - "1337:1337"
-    environment:
-      DATABASE_CLIENT: postgres
-      DATABASE_HOST: rate-postgres
-      DATABASE_PORT: 5432
-      DATABASE_NAME: rate
-      DATABASE_USERNAME: joy
-      DATABASE_PASSWORD: rate@123!
-      API_TOKEN_SALT: tobemodified
-      ADMIN_JWT_SECRET: ratebox-admin-jwt-secret
-      JWT_SECRET: ratebox-jwt-secret
-      APP_KEYS: key1,key2,key3,key4
-      TRANSFER_TOKEN_SALT: ratebox-transfer-token-salt
+      - "1337:1337"  # Map cổng
     volumes:
-      - ./strapi/config:/opt/app/config
-      - ./strapi/src:/opt/app/src
-      - ./strapi/package.json:/opt/app/package.json
-      - ./strapi/yarn.lock:/opt/app/yarn.lock
-      - ./strapi/public/uploads:/opt/app/public/uploads
+      - ./strapi/config:/opt/app/config        # Mount thư mục config
+      - ./strapi/src:/opt/app/src              # Mount thư mục source code
+      - ./strapi/package.json:/opt/app/package.json # Mount file package.json
+      - ./strapi/yarn.lock:/opt/app/yarn.lock  # Mount file yarn.lock
+      - ./strapi/.env:/opt/app/.env            # Mount file .env để có thể thay đổi biến môi trường mà không cần rebuild
+      - ./strapi/public/uploads:/opt/app/public/uploads # Mount thư mục uploads
     networks:
-      - rate-network
+      - rate  # Kết nối mạng
+    depends_on:  # Phụ thuộc vào service khác
+      - rateDB  # Chỉ khởi động sau khi rateDB đã chạy
 
-  rate-next:
-    build: ./next
-    image: rate-next:latest
-    container_name: rate-next
+  # Service Next.js - Frontend
+  next:
+    image: next  # Tên image sẽ được build
+    build:
+      context: ./next  # Thư mục chứa Dockerfile
+      dockerfile: Dockerfile  # Tên file Dockerfile
+    container_name: next
     restart: always
-    depends_on:
-      - rate-strapi
+    env_file:  # Sử dụng file .env
+      - ./next/.env
     ports:
-      - "3001:3001"
-    environment:
-      NEXT_PUBLIC_API_URL: http://localhost:1337
-      NEXT_PUBLIC_STRAPI_API_URL: http://localhost:1337
-      NEXT_INTERNAL_API_URL: http://rate-strapi:1337
-      IMAGE_HOSTNAME: localhost
-      IMAGE_PORT: 1337
+      - "3001:3001"  # Map cổng
     volumes:
-      - ./next/src:/opt/app/src
-      - ./next/public:/opt/app/public
-      - ./next/package.json:/opt/app/package.json
-      - ./next/yarn.lock:/opt/app/yarn.lock
-      - ./next/.env:/opt/app/.env
-      - ./next/next.config.mjs:/opt/app/next.config.mjs
+      - ./next:/app  # Mount thư mục next vào container
     networks:
-      - rate-network
+      - rate  # Kết nối mạng
+    depends_on:  # Phụ thuộc vào service khác
+      - strapi  # Chỉ khởi động sau khi strapi đã chạy
 
-networks:
-  rate-network:
-    driver: bridge
-
+# Định nghĩa volumes
 volumes:
-  rate_pgdata:
-    name: rate_pgdata
+  postgres_data:  # Volume cho PostgreSQL để lưu trữ dữ liệu
+
+# Định nghĩa networks
+networks:
+  rate:
+    name: Rate
+    driver: bridge  # Sử dụng bridge network cho các container giao tiếp với nhau

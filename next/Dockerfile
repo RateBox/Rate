@@ -1,6 +1,6 @@
 FROM node:lts
 
-WORKDIR /opt/app
+WORKDIR /app
 
 COPY package.json yarn.lock ./
 
@@ -8,8 +8,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn build
-
 EXPOSE 3001
 
-CMD ["yarn", "start"]
+# Chạy trong chế độ development thay vì production
+CMD ["yarn", "dev"]

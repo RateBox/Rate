@@ -42,8 +42,11 @@ export default async function fetchContentType(
       queryParams.status = "draft";
     }
 
+    // Sử dụng NEXT_INTERNAL_API_URL khi chạy trên server trong Docker
+    const apiUrl = process.env.NEXT_INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL;
+
     // Construct the full URL for the API request
-    const url = new URL(`api/${contentType}`, process.env.NEXT_PUBLIC_API_URL);
+    const url = new URL(`api/${contentType}`, apiUrl);
 
     // Perform the fetch request with the provided query parameters
     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
