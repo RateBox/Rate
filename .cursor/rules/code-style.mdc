@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Code Style
+- Use tabs for indentation
+- Comment kỹ càng trong code

@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Planning Phase
+- Begin with step-by-step planning
+- Write detailed pseudocode before implementation
+- Document component architecture and data flow
+- Consider edge cases and error scenarios

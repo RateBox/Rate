@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Dùng Next.js App Router (`app/`)
+- Ưu tiên React Server Components
+- Sử dụng Tailwind CSS và Shadcn UI
+- Components đặt tên theo PascalCase
+- File names theo kebab-case
