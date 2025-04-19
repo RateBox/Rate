@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" modified="2025-04-19T10:17:55.941Z" agent="Mozilla/5.0" version="22.1.21" etag="oM2SU89Bym5Fv5QSAqDx" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Database Schema">
+    <mxGraphModel dx="1223" dy="871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="item1" value="Item&#xa;--&#xa;title: string&#xa;slug: uid&#xa;description: blocks&#xa;thumbnail: media&#xa;gallery: media&#xa;price: decimal&#xa;is_active: boolean&#xa;featured: boolean&#xa;rating: decimal" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=70;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="120" width="240" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="category1" value="Category&#xa;--&#xa;name: string&#xa;slug: uid&#xa;description: blocks&#xa;is_active: boolean" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=70;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="480" y="120" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="review1" value="Review&#xa;--&#xa;title: string&#xa;reviewer_name: string&#xa;reviewer_type: enum&#xa;rating: integer&#xa;content: blocks&#xa;is_approved: boolean&#xa;reviewed_at: datetime&#xa;verified_purchase: boolean&#xa;helpful_count: integer&#xa;images: media" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=70;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="440" width="240" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="brand1" value="Brand/Provider&#xa;--&#xa;name: string&#xa;slug: uid&#xa;logo: media&#xa;description: blocks&#xa;website: string" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=70;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="480" y="440" width="240" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="spec1" value="Specification (Dynamic Zone)&#xa;--&#xa;Phone-Specs:&#xa;screen_size, resolution, processor,&#xa;ram, storage, battery, camera&#xa;&#xa;Vehicle-Specs:&#xa;engine_type, max_speed, power,&#xa;fuel_type, transmission&#xa;&#xa;General-Specs:&#xa;name-value pairs" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=150;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="760" width="240" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startFill=0;" edge="1" parent="1" source="category1" target="item1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="330" y="330" as="sourcePoint" />
+            <mxPoint x="430" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startFill=0;" edge="1" parent="1" source="item1" target="review1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="330" y="330" as="sourcePoint" />
+            <mxPoint x="430" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startFill=0;" edge="1" parent="1" source="brand1" target="item1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="330" y="330" as="sourcePoint" />
+            <mxPoint x="430" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;startFill=0;" edge="1" parent="1" source="item1" target="spec1">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="330" y="330" as="sourcePoint" />
+            <mxPoint x="430" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile> 
