@@ -3,7 +3,7 @@ description:
 globs: 
 alwaysApply: true
 ---
-- Dùng Strapi v5 + PostgreSQL
+- Dùng Strapi v5 + PostgreSQL 17.4
 - Sử dụng Dynamic Zone và Components hợp lý
 - Luôn chạy yarn build --clean trước khi deploy
 - Không mount cả thư mục strapi vào docker mà chỉ mount các thư mục và file cần thiết

@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "http",
-        hostname: "rate-strapi",
+        hostname: "strapi",
         port: "1337",
         pathname: "/uploads/**",
       },
@@ -39,6 +39,14 @@ const nextConfig = {
       return [];
     }
   },
+  async rewrites() {
+    return [
+      {
+        source: '/uploads/:path*',
+        destination: 'http://strapi:1337/uploads/:path*'
+      }
+    ]
+  }
 };
 
 export default nextConfig;
