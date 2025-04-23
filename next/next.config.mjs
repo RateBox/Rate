@@ -1,19 +1,21 @@
-// next.config.mjs
+// @type {import('next').NextConfig} / next.config.mjs
+
 const nextConfig = {
   images: {
+    domains: ['strapi', 'localhost'],
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
-        pathname: "/uploads/**",
+        protocol: 'http',
+        hostname: 'strapi',
+        port: '1337',
+        pathname: '/uploads/**',
       },
       {
-        protocol: "http",
-        hostname: "strapi",
-        port: "1337",
-        pathname: "/uploads/**",
-      },
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/uploads/**',
+      }
     ],
   },
   pageExtensions: ["ts", "tsx"],
@@ -21,7 +23,7 @@ const nextConfig = {
     let redirections = [];
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/redirections`
+        `${process.env.NEXT_INTERNAL_API_URL}/api/redirections`
       );
       const result = await res.json();
       const redirectItems = result.data.map(({ source, destination }) => {
@@ -39,14 +41,6 @@ const nextConfig = {
       return [];
     }
   },
-  async rewrites() {
-    return [
-      {
-        source: '/uploads/:path*',
-        destination: 'http://strapi:1337/uploads/:path*'
-      }
-    ]
-  }
 };
 
 export default nextConfig;
