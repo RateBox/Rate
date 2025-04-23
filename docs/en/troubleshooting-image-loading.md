@@ -42,6 +42,46 @@ NEXT_PUBLIC_IMAGE_HOSTNAME=strapi
 NEXT_PUBLIC_IMAGE_PORT=1337
 ```
 
+In `next.config.mjs`, configure `remotePatterns` for Image Optimizer:
+```javascript
+{
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "http",
+        hostname: "strapi",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+    ],
+  }
+}
+```
+
+### 4. Handle Image URLs
+In `lib/strapi/strapiImage.ts`, use `NEXT_PUBLIC_API_URL` for all cases:
+```typescript
+export function strapiImage(url: string): string {
+  if (url.startsWith("/")) {
+    // Always use NEXT_PUBLIC_API_URL because:
+    // 1. Next.js Image is configured with remotePatterns
+    // 2. Browser needs accessible URL
+    return process.env.NEXT_PUBLIC_API_URL + url
+  }
+  return url
+}
+```
+
+**Note**: 
+- No need to differentiate between server-side and client-side URLs as Next.js Image Optimizer will handle this through `remotePatterns`
+- No need to configure `rewrites()` in `next.config.mjs`
+
 ## Verification
 1. Restart all containers:
 ```bash

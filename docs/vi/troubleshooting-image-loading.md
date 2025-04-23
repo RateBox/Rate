@@ -42,6 +42,46 @@ NEXT_PUBLIC_IMAGE_HOSTNAME=strapi
 NEXT_PUBLIC_IMAGE_PORT=1337
 ```
 
+Trong `next.config.mjs`, cấu hình `remotePatterns` cho Image Optimizer:
+```javascript
+{
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "http",
+        hostname: "strapi",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+    ],
+  }
+}
+```
+
+### 4. Xử lý URL hình ảnh
+Trong `lib/strapi/strapiImage.ts`, sử dụng `NEXT_PUBLIC_API_URL` cho mọi trường hợp:
+```typescript
+export function strapiImage(url: string): string {
+  if (url.startsWith("/")) {
+    // Luôn sử dụng NEXT_PUBLIC_API_URL vì:
+    // 1. Next.js Image đã được cấu hình với remotePatterns
+    // 2. Browser cần truy cập được URL này
+    return process.env.NEXT_PUBLIC_API_URL + url
+  }
+  return url
+}
+```
+
+**Lưu ý**: 
+- Không cần phân biệt giữa server-side và client-side URL vì Next.js Image Optimizer sẽ tự động xử lý thông qua `remotePatterns`
+- Không cần cấu hình `rewrites()` trong `next.config.mjs`
+
 ## Kiểm tra
 1. Khởi động lại tất cả các container:
 ```bash
