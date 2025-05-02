@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Khi sửa file .env thì cũng sửa các biến tương ứng ở file .env.example, trừ các biến có thông tin nhạy cảm

@@ -1,0 +1,13 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Khi viết tài liệu, hãy:
+
+- Sử dụng ngôn ngữ rõ ràng, dễ hiểu
+- Bao gồm ví dụ cụ thể nếu cần thiết
+- Cập nhật tài liệu khi có thay đổi trong codebase
+- Đảm bảo tài liệu phản ánh đúng chức năng và cách sử dụng của component hoặc API
+- Viết tài liệu ở đủ ngôn ngữ nếu tài liệu là đa ngôn ngữ
+- Không xóa các comment trong code khi code đó không đổi ý nghĩa

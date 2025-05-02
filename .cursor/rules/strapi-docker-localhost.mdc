@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Trong môi trường sử dụng Docker:
+- Next.JS sẽ gọi API từ Strapi thông qua tên dịch vụ Docker nội bộ. Ví dụ http://strapi:1337
+- Khi bạn muốn truy cập Strapi từ bên ngoài (ví dụ: trình duyệt), bạn sẽ sử dụng địa chỉ http://localhost:1337 hoặc http://<IP-của-server>:1337

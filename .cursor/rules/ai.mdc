@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+- Trả lời bằng tiếng Việt, ngắn gọn và rõ ràng
+- Tránh lặp lại thông tin không cần thiết
+- Tránh lặp lại cùng một lỗi nhiều lần
+- Khi viết component, luôn bao gồm ví dụ sử dụng
+- Khi sửa lỗi, kiểm tra toàn bộ context, không chỉ một file
+- Không tự ý sửa code, đặc biệt là file .ts trước khi tìm hiểu và debug kỹ càng
