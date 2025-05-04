@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "platforms",
+  "info": {
+    "singularName": "platform",
+    "pluralName": "platforms",
+    "displayName": "Platform",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Code": {
+      "type": "uid",
+      "required": true
+    },
+    "Country": {
+      "type": "string",
+      "required": true,
+      "regex": "^[A-Z]{2}$"
+    },
+    "Currency": {
+      "type": "string",
+      "regex": "^[A-Z]{3}$",
+      "required": true
+    },
+    "Domain": {
+      "type": "string",
+      "regex": "^[a-z0-9.-]+\\\\.[a-z]{2,}$"
+    },
+    "Logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
