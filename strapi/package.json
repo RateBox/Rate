@@ -12,16 +12,20 @@
     "seed": "strapi import -f ./data/export_20250116105447.tar.gz"
   },
   "devDependencies": {
+    "@strapi/types": "5.12.4",
+    "@strapi/typescript-utils": "5.12.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "typescript": "^5"
   },
   "dependencies": {
+    "@strapi/design-system": "2.0.0-rc.23",
+    "@strapi/icons": "2.0.0-rc.23",
     "@strapi/plugin-cloud": "5.12.4",
     "@strapi/plugin-seo": "^2.0.4",
     "@strapi/plugin-users-permissions": "5.12.4",
-    "@strapi/strapi": "^5.12.5",
+    "@strapi/strapi": "5.12.4",
     "better-sqlite3": "11.7.0",
     "patch-package": "^8.0.0",
     "pg": "^8.14.1",
@@ -29,9 +33,15 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "strapi-plugin-locale-select": "^2.0.9",
+    "strapi-plugin-locale-select": "^2.0.17",
     "styled-components": "^6.0.0",
     "uuid": "^10.0.0"
+  },
+  "resolutions": {
+    "@strapi/design-system": "2.0.0-rc.23",
+    "@strapi/icons": "2.0.0-rc.23",
+    "@strapi/types": "5.12.4",
+    "@strapi/typescript-utils": "5.12.4"
   },
   "author": {
     "name": "A Strapi developer"

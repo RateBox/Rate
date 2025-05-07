@@ -15,10 +15,11 @@
     "repo:upstream": "git fetch upstream && git merge upstream/main"
   },
   "dependencies": {
-    "@types/node": "^22.5.2",
+    "@types/node": "^22.15.3",
     "concurrently": "^8.2.2",
-    "typescript": "^5.0.0",
-    "wait-on": "^8.0.1"
+    "strapi-plugin-locale-select": "2.0.18",
+    "typescript": "^5.8.3",
+    "wait-on": "^8.0.3"
   },
   "devDependencies": {
     "ts-node": "^10.9.2"
