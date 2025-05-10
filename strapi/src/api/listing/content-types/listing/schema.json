@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "listings",
+  "info": {
+    "singularName": "listing",
+    "pluralName": "listings",
+    "displayName": "Listing",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "ListingID": {
+      "type": "string"
+    },
+    "URL": {
+      "type": "string"
+    }
+  }
+}
