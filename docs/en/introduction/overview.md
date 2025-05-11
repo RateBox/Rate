@@ -1,6 +1,6 @@
-# RateBox Overview
+# Technical Architecture
 
-RateBox is a comprehensive product and service review platform, built with the goal of providing the best user experience for both reviewers and businesses.
+This document provides a detailed technical overview of the RateBox platform architecture, components, and data flow. For a general introduction to RateBox, please refer to the [home page](/).
 
 ## System Architecture
 

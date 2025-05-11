@@ -1,6 +1,6 @@
-# Tổng quan về RateBox
+# Kiến trúc Kỹ thuật
 
-RateBox là một nền tảng đánh giá sản phẩm và dịch vụ toàn diện, được xây dựng với mục tiêu cung cấp trải nghiệm người dùng tốt nhất cho cả người đánh giá và doanh nghiệp.
+Tài liệu này cung cấp tổng quan chi tiết về kiến trúc kỹ thuật, các thành phần và luồng dữ liệu của nền tảng RateBox. Để biết giới thiệu chung về RateBox, vui lòng tham khảo [trang chủ](/).
 
 ## Kiến trúc hệ thống
 
