@@ -14,7 +14,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@headlessui/react": "^2.1.2",
     "@mapbox/rehype-prism": "^0.9.0",
-    "@react-three/drei": "^9.109.2",
+    "@react-three/drei": "^10.0.7",
     "@react-three/fiber": "^8.16.8",
     "@strapi/blocks-react-renderer": "^1.0.1",
     "@tabler/icons-react": "^3.11.0",
@@ -41,8 +41,9 @@
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.167.0",
-    "three-globe": "^2.31.1"
+    "three": "^0.176.0",
+    "three-globe": "^2.42.4",
+    "three-mesh-bvh": "^0.9.0"
   },
   "devDependencies": {
     "@types/negotiator": "^0.6.3",

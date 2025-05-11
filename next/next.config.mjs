@@ -2,14 +2,8 @@
 
 const nextConfig = {
   images: {
-    domains: ['strapi', 'localhost'],
+    domains: ['localhost'],
     remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'strapi',
-        port: '1337',
-        pathname: '/uploads/**',
-      },
       {
         protocol: 'http',
         hostname: 'localhost',

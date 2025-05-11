@@ -11,52 +11,13 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Name": {
-      "type": "string",
-      "required": true,
-      "unique": true
+    "Address": {
+      "type": "customField",
+      "customField": "plugin::locale-select.address-autocomplete"
     },
-    "Code": {
+    "Title": {
       "type": "string",
-      "required": true,
-      "unique": true,
-      "regex": "^[a-z0-9-]+$"
-    },
-    "Slug": {
-      "type": "uid",
-      "targetField": "Name",
       "required": true
-    },
-    "Domain": {
-      "type": "string",
-      "required": true,
-      "unique": true,
-      "regex": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\\\.)+[a-z]{2,}$"
-    },
-    "Logo": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
-    "Country": {
-      "type": "customField",
-      "customField": "plugin::locale-select.country-select"
-    },
-    "Language": {
-      "type": "customField",
-      "customField": "plugin::locale-select.language-select"
-    },
-    "Currency": {
-      "type": "customField",
-      "customField": "plugin::locale-select.currency-select"
-    },
-    "Timezone": {
-      "type": "customField",
-      "customField": "plugin::locale-select.timezone-select"
     }
   }
 }

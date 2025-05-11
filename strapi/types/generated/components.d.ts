@@ -1,5 +1,28 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface AttributeColor extends Struct.ComponentSchema {
+  collectionName: 'components_attribute_colors';
+  info: {
+    displayName: 'Color';
+  };
+  attributes: {
+    Color: Schema.Attribute.Enumeration<
+      ['Red', 'White', 'Black', 'Blue', 'Yellow']
+    >;
+  };
+}
+
+export interface AttributeWeight extends Struct.ComponentSchema {
+  collectionName: 'components_attribute_weights';
+  info: {
+    displayName: 'Weight';
+  };
+  attributes: {
+    Unit: Schema.Attribute.Enumeration<['kg', 'g', 'lb']>;
+    Weight: Schema.Attribute.Decimal;
+  };
+}
+
 export interface CardsGlobeCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_globe_cards';
   info: {
@@ -532,6 +555,8 @@ export interface SharedUser extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'attribute.color': AttributeColor;
+      'attribute.weight': AttributeWeight;
       'cards.globe-card': CardsGlobeCard;
       'cards.graph-card': CardsGraphCard;
       'cards.ray-card': CardsRayCard;

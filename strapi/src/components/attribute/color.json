@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_attribute_colors",
+  "info": {
+    "displayName": "Color"
+  },
+  "options": {},
+  "attributes": {
+    "Color": {
+      "type": "enumeration",
+      "enum": [
+        "Red",
+        "White",
+        "Black",
+        "Blue",
+        "Yellow"
+      ]
+    }
+  }
+}
