@@ -6,7 +6,7 @@ if (-not (Test-Path -Path "backup")) {
 # Backup database PostgreSQL
 Write-Host "Backing up PostgreSQL database..."
 $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
-docker exec rate-postgres pg_dump -U joy -d rate > "backup/rate_$timestamp.sql"
+docker exec rateDB pg_dump -U joy -d rate > "backup/rate_$timestamp.sql"
 
 # Backup uploads từ Strapi
 Write-Host "Backing up Strapi uploads..."
