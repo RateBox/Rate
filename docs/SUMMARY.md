@@ -16,6 +16,12 @@
 
 ### Triển Khai
 * [Môi Trường Staging](vi/deployment/staging.md)
+* [Sao Lưu PostgreSQL](vi/deployment/backup-postgres.md)
+* [Build Docker](vi/deployment/build-docker.md)
+
+### Xử Lý Sự Cố
+* [Xử Lý Lỗi Tải Hình Ảnh](vi/troubleshooting-image-loading.md)
+* [Xử Lý Sự Cố PostgreSQL](vi/troubleshooting-postgres.md)
 
 ### Đóng Góp
 * [Quy Trình Git](vi/contributing/git-workflow.md)
