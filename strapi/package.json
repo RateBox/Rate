@@ -14,7 +14,18 @@
   "devDependencies": {
     "@strapi/types": "5.12.4",
     "@strapi/typescript-utils": "5.12.4",
-    "@types/node": "^20",
+    "@types/body-parser": "^1.19.5",
+    "@types/eslint": "^9.6.1",
+    "@types/eslint-scope": "^8.3.0",
+    "@types/estree": "^1.0.7",
+    "@types/express": "^5.0.1",
+    "@types/json-schema": "^7.0.15",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/koa": "^2.15.0",
+    "@types/mime": "^3.0.4",
+    "@types/node": "^20.17.46",
+    "@types/qs": "^6.9.18",
+    "@types/range-parser": "^1.2.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "typescript": "^5"
@@ -34,7 +45,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.0",
-    "strapi-plugin-locale-select": "file:../../Locale-Select/strapi-plugin-locale-select-2.0.44.tgz",
+    "strapi-plugin-locale-select": "file:../../Locale-Select/strapi-plugin-locale-select-2.0.47.tgz",
     "styled-components": "^6.1.15",
     "uuid": "^10.0.0"
   },
