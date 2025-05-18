@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "listing_types",
+  "info": {
+    "singularName": "listing-type",
+    "pluralName": "listing-types",
+    "displayName": "Listing Type",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Name"
+    },
+    "Code": {
+      "type": "string",
+      "regex": "^[a-z0-9_-]+$",
+      "unique": true,
+      "required": true
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "Rating_Criteria": {
+      "type": "component",
+      "repeatable": true,
+      "component": "rating.rating-criteria"
+    }
+  }
+}

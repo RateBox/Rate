@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_rating_rating_criteria",
+  "info": {
+    "displayName": "Criterion",
+    "icon": "star",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Criterion": {
+      "type": "string",
+      "required": true
+    },
+    "Weight": {
+      "type": "decimal"
+    },
+    "Tooltip": {
+      "type": "string"
+    },
+    "Required": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "listing",
     "pluralName": "listings",
-    "displayName": "Listing"
+    "displayName": "Listing",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,37 @@
     },
     "Price": {
       "type": "decimal"
+    },
+    "Address": {
+      "type": "customField",
+      "customField": "plugin::locale-select.address-autocomplete"
+    },
+    "platform": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::platform.platform",
+      "inversedBy": "listings"
+    },
+    "URL": {
+      "type": "string",
+      "required": true,
+      "regex": "^https?://"
+    },
+    "Affiliate_URL": {
+      "type": "string"
+    },
+    "is_Active": {
+      "type": "boolean",
+      "default": true
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "listings"
     }
   }
 }

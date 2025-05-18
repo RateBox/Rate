@@ -375,6 +375,21 @@ export interface ItemsRayItems extends Struct.ComponentSchema {
   };
 }
 
+export interface RatingRatingCriteria extends Struct.ComponentSchema {
+  collectionName: 'components_rating_rating_criteria';
+  info: {
+    description: '';
+    displayName: 'Criterion';
+    icon: 'star';
+  };
+  attributes: {
+    Criterion: Schema.Attribute.String & Schema.Attribute.Required;
+    Required: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    Tooltip: Schema.Attribute.String;
+    Weight: Schema.Attribute.Decimal;
+  };
+}
+
 export interface ReviewCons extends Struct.ComponentSchema {
   collectionName: 'components_review_cons';
   info: {
@@ -579,6 +594,7 @@ declare module '@strapi/strapi' {
       'items.input': ItemsInput;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.ray-items': ItemsRayItems;
+      'rating.rating-criteria': RatingRatingCriteria;
       'review.cons': ReviewCons;
       'review.pros': ReviewPros;
       'shared.button': SharedButton;

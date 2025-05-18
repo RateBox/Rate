@@ -541,15 +541,17 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::directory.directory'
     >;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     is_active: Schema.Attribute.Boolean;
     items: Schema.Attribute.Relation<'oneToMany', 'api::item.item'>;
+    listings: Schema.Attribute.Relation<'manyToMany', 'api::listing.listing'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    Name: Schema.Attribute.String;
     product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID;
@@ -821,9 +823,47 @@ export interface ApiItemItem extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiListingTypeListingType extends Struct.CollectionTypeSchema {
+  collectionName: 'listing_types';
+  info: {
+    description: '';
+    displayName: 'Listing Type';
+    pluralName: 'listing-types';
+    singularName: 'listing-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Code: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::listing-type.listing-type'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    Rating_Criteria: Schema.Attribute.Component<'rating.rating-criteria', true>;
+    Slug: Schema.Attribute.UID<'Name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiListingListing extends Struct.CollectionTypeSchema {
   collectionName: 'listings';
   info: {
+    description: '';
     displayName: 'Listing';
     pluralName: 'listings';
     singularName: 'listing';
@@ -832,15 +872,25 @@ export interface ApiListingListing extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Address: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::locale-select.address-autocomplete'>;
+    Affiliate_URL: Schema.Attribute.String;
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description: Schema.Attribute.Blocks;
+    is_Active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::listing.listing'
     > &
       Schema.Attribute.Private;
+    platform: Schema.Attribute.Relation<'manyToOne', 'api::platform.platform'>;
     Price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     Slug: Schema.Attribute.UID<'Title'>;
@@ -848,6 +898,7 @@ export interface ApiListingListing extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    URL: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -996,6 +1047,8 @@ export interface ApiPlatformPlatform extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Currency: Schema.Attribute.String &
       Schema.Attribute.CustomField<'plugin::locale-select.currency-select'>;
+    is_Active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    listings: Schema.Attribute.Relation<'oneToMany', 'api::listing.listing'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1766,6 +1819,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::item-page.item-page': ApiItemPageItemPage;
       'api::item.item': ApiItemItem;
+      'api::listing-type.listing-type': ApiListingTypeListingType;
       'api::listing.listing': ApiListingListing;
       'api::logo.logo': ApiLogoLogo;
       'api::page.page': ApiPagePage;

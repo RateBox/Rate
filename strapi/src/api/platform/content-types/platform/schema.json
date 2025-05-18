@@ -56,6 +56,16 @@
     "Timezone": {
       "type": "customField",
       "customField": "plugin::locale-select.timezone-select"
+    },
+    "listings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::listing.listing",
+      "mappedBy": "platform"
+    },
+    "is_Active": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
