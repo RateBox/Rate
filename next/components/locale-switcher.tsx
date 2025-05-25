@@ -11,7 +11,7 @@ export function LocaleSwitcher({ currentLocale }: { currentLocale: string }) {
   const { localizedSlugs } = state;
 
   const pathname = usePathname(); // Current path
-  const segments = pathname.split("/"); // Split path into segments
+  const segments = (pathname ?? "").split("/"); // Split path into segments
 
   // Generate localized path for each locale
   const generateLocalizedPath = (locale: string): string => {
@@ -36,7 +36,7 @@ export function LocaleSwitcher({ currentLocale }: { currentLocale: string }) {
 
   return (
     <div className="flex gap-2 p-1 rounded-md">
-      {!pathname.includes("/products/") && Object.keys(localizedSlugs).map((locale) => (
+      {pathname && !pathname.includes("/products/") && Object.keys(localizedSlugs).map((locale) => (
         <Link key={locale} href={generateLocalizedPath(locale)}>
           <div
             className={cn(

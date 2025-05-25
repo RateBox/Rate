@@ -58,7 +58,7 @@ export const Launches = ({ heading, sub_heading, launches }: { heading: string; 
     >
       <div className="px-6">
         <FeatureIconContainer className="flex justify-center items-center overflow-hidden">
-          <IconRocket className="h-6 w-6 text-white" />
+          <IconRocket className="h-6 w-6 text-white" suppressHydrationWarning />
         </FeatureIconContainer>
         <Heading className="mt-4">{heading}</Heading>
         <Subheading>

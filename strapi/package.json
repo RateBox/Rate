@@ -12,8 +12,8 @@
     "seed": "strapi import -f ./data/export_20250116105447.tar.gz"
   },
   "devDependencies": {
-    "@strapi/types": "5.12.4",
-    "@strapi/typescript-utils": "5.12.4",
+    "@strapi/types": "5.13.1",
+    "@strapi/typescript-utils": "5.13.1",
     "@types/body-parser": "^1.19.5",
     "@types/eslint": "^9.6.1",
     "@types/eslint-scope": "^8.3.0",
@@ -33,10 +33,10 @@
   "dependencies": {
     "@strapi/design-system": "2.0.0-rc.23",
     "@strapi/icons": "2.0.0-rc.23",
-    "@strapi/plugin-cloud": "5.12.4",
+    "@strapi/plugin-cloud": "5.13.1",
     "@strapi/plugin-seo": "^2.0.4",
-    "@strapi/plugin-users-permissions": "5.12.4",
-    "@strapi/strapi": "5.12.4",
+    "@strapi/plugin-users-permissions": "5.13.1",
+    "@strapi/strapi": "5.13.1",
     "@strapi/utils": "^5.13.0",
     "better-sqlite3": "11.7.0",
     "patch-package": "^8.0.0",

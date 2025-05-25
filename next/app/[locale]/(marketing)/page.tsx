@@ -5,18 +5,14 @@ import fetchContentType from '@/lib/strapi/fetchContentType';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import ClientSlugHandler from './ClientSlugHandler';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const pageData = await fetchContentType(
     'pages',
     {
       filters: {
         slug: "homepage",
-        locale: params.locale,
+        locale,
       },
       populate: "seo.metaImage",
     },
@@ -28,14 +24,14 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function HomePage({ params }: { params: { locale: string } }) {
-
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const pageData = await fetchContentType(
     'pages',
     {
       filters: {
         slug: "homepage",
-        locale: params.locale,
+        locale,
       },
     },
     true
@@ -46,7 +42,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
       acc[localization.locale] = "";
       return acc;
     },
-    { [params.locale]: "" }
+    { [locale]: "" }
   );
 
   return <>

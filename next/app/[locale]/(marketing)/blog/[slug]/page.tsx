@@ -6,17 +6,14 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 import ClientSlugHandler from "../../ClientSlugHandler";
 
-export default async function SingleArticlePage({
-  params,
-}: {
-  params: { slug: string; locale: string };
-}) {
+export default async function SingleArticlePage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params;
   const article = await fetchContentType(
     "articles",
     {
       filters: {
-        slug: params.slug,
-        locale: params.locale,
+        slug,
+        locale,
       }
     },
     true,
@@ -31,11 +28,11 @@ export default async function SingleArticlePage({
       acc[localization.locale] = localization.slug;
       return acc;
     },
-    { [params.locale]: params.slug }
+    { [locale]: slug }
   );
 
   return (
-    <BlogLayout article={article} locale={params.locale}>
+    <BlogLayout article={article} locale={locale}>
       <ClientSlugHandler localizedSlugs={localizedSlugs} />
       <BlocksRenderer content={article.content} />
     </BlogLayout>

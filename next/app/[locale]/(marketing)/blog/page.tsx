@@ -14,13 +14,10 @@ import { generateMetadataObject } from '@/lib/shared/metadata';
 
 import ClientSlugHandler from "../ClientSlugHandler";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const pageData = await fetchContentType('blog-page', {
-    filters: { locale: params.locale },
+    filters: { locale },
     populate: "seo.metaImage",
   }, true)
 
@@ -29,16 +26,13 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function Blog({
-  params,
-}: {
-  params: { locale: string, slug: string };
-}) {
+export default async function Blog({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const { locale } = await params;
   const blogPage = await fetchContentType('blog-page', {
-    filters: { locale: params.locale },
+    filters: { locale },
   }, true)
   const articles = await fetchContentType('articles', {
-    filters: { locale: params.locale },
+    filters: { locale },
   }, false)
 
   const localizedSlugs = blogPage.localizations?.reduce(
@@ -46,7 +40,7 @@ export default async function Blog({
       acc[localization.locale] = "blog";
       return acc;
     },
-    { [params.locale]: "blog" }
+    { [locale]: "blog" }
   );
 
   return (
@@ -67,7 +61,7 @@ export default async function Blog({
         </div>
 
         {articles.data.slice(0, 1).map((article: Article) => (
-          <BlogCard article={article} locale={params.locale} key={article.title} />
+          <BlogCard article={article} locale={locale} key={article.title} />
         ))}
 
         <BlogPostRows articles={articles.data} />

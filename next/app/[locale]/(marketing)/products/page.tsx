@@ -13,15 +13,11 @@ import { generateMetadataObject } from '@/lib/shared/metadata';
 
 import ClientSlugHandler from '../ClientSlugHandler';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const pageData = await fetchContentType("product-page", {
     filters: {
-      locale: params.locale,
+      locale,
     },
     populate: "seo.metaImage",
   }, true)
@@ -31,16 +27,12 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function Products({
-  params,
-}: {
-  params: { locale: string };
-}) {
-
+export default async function Products({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   // Fetch the product-page and products data
   const productPage = await fetchContentType('product-page', {
     filters: {
-      locale: params.locale,
+      locale,
     },
   }, true);
   const products = await fetchContentType('products');
@@ -50,7 +42,7 @@ export default async function Products({
       acc[localization.locale] = "products";
       return acc;
     },
-    { [params.locale]: "products" }
+    { [locale]: "products" }
   );
   const featured = products?.data.filter((product: { featured: boolean }) => product.featured);
 
@@ -68,8 +60,8 @@ export default async function Products({
         <Subheading className="max-w-3xl mx-auto">
           {productPage.sub_heading}
         </Subheading>
-        <Featured products={featured} locale={params.locale} />
-        <ProductItems products={products?.data} locale={params.locale} />
+        <Featured products={featured} locale={locale} />
+        <ProductItems products={products?.data} locale={locale} />
       </Container>
     </div>
   );

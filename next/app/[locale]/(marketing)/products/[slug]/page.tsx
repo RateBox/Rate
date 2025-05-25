@@ -12,11 +12,11 @@ import fetchContentType from "@/lib/strapi/fetchContentType";
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string, slug: string };
+  params: Promise<{ locale: string, slug: string }>;
 }): Promise<Metadata> {
-
+  const { locale, slug } = await params;
   const pageData = await fetchContentType("products", {
-    filters: { slug: params.slug },
+    filters: { slug },
     populate: "seo.metaImage",
   }, true)
 
@@ -28,11 +28,11 @@ export async function generateMetadata({
 export default async function SingleProductPage({
   params,
 }: {
-  params: { slug: string, locale: string };
+  params: Promise<{ slug: string, locale: string }>;
 }) {
-
+  const { slug, locale } = await params;
   const product = await fetchContentType("products", {
-    filters: { slug: params.slug },
+    filters: { slug },
   }, true)
 
   if (!product) {
@@ -44,7 +44,7 @@ export default async function SingleProductPage({
       <AmbientColor />
       <Container className="py-20 md:py-40">
         <SingleProduct product={product} />
-        {product?.dynamic_zone && (<DynamicZoneManager dynamicZone={product?.dynamic_zone} locale={params.locale} />)}
+        {product?.dynamic_zone && (<DynamicZoneManager dynamicZone={product?.dynamic_zone} locale={locale} />)}
       </Container>
     </div>
   );

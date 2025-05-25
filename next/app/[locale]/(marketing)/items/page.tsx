@@ -13,15 +13,11 @@ import { generateMetadataObject } from '@/lib/shared/metadata';
 
 import ClientSlugHandler from '../ClientSlugHandler';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const pageData = await fetchContentType("item-page", {
     filters: {
-      locale: params.locale,
+      locale,
     },
     populate: "seo.metaImage",
   }, true)
@@ -31,16 +27,12 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function Items({
-  params,
-}: {
-  params: { locale: string };
-}) {
-
+export default async function Items({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   // Fetch the item-page and items data
   const itemPage = await fetchContentType('item-page', {
     filters: {
-      locale: params.locale,
+      locale,
     },
   }, true);
   const items = await fetchContentType('items');
@@ -50,7 +42,7 @@ export default async function Items({
       acc[localization.locale] = "items";
       return acc;
     },
-    { [params.locale]: "items" }
+    { [locale]: "items" }
   );
   const featured = items?.data.filter((item: { featured: boolean }) => item.featured);
 
@@ -68,8 +60,8 @@ export default async function Items({
         <Subheading className="max-w-3xl mx-auto">
           {itemPage.sub_heading}
         </Subheading>
-        <Featured items={featured} locale={params.locale} />
-        <ItemItems items={items?.data} locale={params.locale} />
+        <Featured items={featured} locale={locale} />
+        <ItemItems items={items?.data} locale={locale} />
       </Container>
     </div>
   );

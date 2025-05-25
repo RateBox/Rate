@@ -52,6 +52,7 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
       <IoIosMenu
         className="text-white h-6 w-6"
         onClick={() => setOpen(!open)}
+        suppressHydrationWarning
       />
 
       {open && (
@@ -63,6 +64,7 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
               <IoIosClose
                 className="h-8 w-8 text-white"
                 onClick={() => setOpen(!open)}
+                suppressHydrationWarning
               />
             </div>
           </div>

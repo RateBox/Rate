@@ -18,33 +18,23 @@ const inter = Inter({
 });
 
 // Default Global SEO for pages without them
-export async function generateMetadata({
-    params,
-}: {
-    params: { locale: string; slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug?: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const pageData = await fetchContentType(
         'global',
         {
-            filters: { locale: params.locale },
+            filters: { locale },
             populate: "seo.metaImage",
         },
         true
     );
-
     const seo = pageData?.seo;
     const metadata = generateMetadataObject(seo);
     return metadata;
 }
 
-export default async function LocaleLayout({
-    children,
-    params: { locale }
-}: {
-    children: React.ReactNode;
-    params: { locale: string };
-}) {
-
+export default async function LocaleLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const pageData = await fetchContentType('global', { filters: { locale } }, true);
     return (
         <html lang={locale}>
@@ -56,9 +46,9 @@ export default async function LocaleLayout({
                             "bg-charcoal antialiased h-full w-full"
                         )}
                     >
-                        <Navbar data={pageData.navbar} locale={locale} />
+                        <Navbar data={pageData?.navbar ?? {}} locale={locale} />
                         {children}
-                        <Footer data={pageData.footer} locale={locale} />
+                        <Footer data={pageData?.footer ?? {}} locale={locale} />
                     </body>
                 </CartProvider>
             </ViewTransitions>

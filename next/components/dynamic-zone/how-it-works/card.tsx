@@ -10,8 +10,17 @@ import {
   useMotionValueEvent,
   useSpring,
 } from "framer-motion";
-import { CanvasRevealEffect } from "../../ui/canvas-reveal-effect";
 import Beam from "../../beam";
+import dynamic from "next/dynamic";
+
+// Dynamic import với ssr: false để tránh lỗi React Three Fiber
+const CanvasRevealEffect = dynamic(
+  () => import("../../ui/canvas-reveal-effect").then(mod => ({ default: mod.CanvasRevealEffect })),
+  {
+    ssr: false,
+    loading: () => <div className="bg-transparent absolute inset-0 pointer-events-none" />,
+  }
+);
 
 export const Card = ({
   title,

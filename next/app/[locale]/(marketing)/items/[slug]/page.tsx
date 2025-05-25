@@ -9,14 +9,10 @@ import { generateMetadataObject } from '@/lib/shared/metadata';
 
 import fetchContentType from "@/lib/strapi/fetchContentType";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string, slug: string };
-}): Promise<Metadata> {
-
+export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params;
   const pageData = await fetchContentType("items", {
-    filters: { slug: params.slug },
+    filters: { slug },
     populate: "seo.metaImage",
   }, true)
 
@@ -25,14 +21,10 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function SingleItemPage({
-  params,
-}: {
-  params: { slug: string, locale: string };
-}) {
-
+export default async function SingleItemPage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
+  const { slug, locale } = await params;
   const item = await fetchContentType("items", {
-    filters: { slug: params.slug },
+    filters: { slug },
   }, true)
 
   if (!item) {
@@ -44,8 +36,8 @@ export default async function SingleItemPage({
       <AmbientColor />
       <Container className="py-20 md:py-40">
         <SingleItem item={item} />
-        {item?.dynamic_zone && (<DynamicZoneManager dynamicZone={item?.dynamic_zone} locale={params.locale} />)}
+        {item?.dynamic_zone && (<DynamicZoneManager dynamicZone={item?.dynamic_zone} locale={locale} />)}
       </Container>
     </div>
   );
-} 
+}

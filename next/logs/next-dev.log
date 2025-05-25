@@ -1,0 +1,2395 @@
+yarn run v1.22.22
+warning ..\package.json: No license field
+$ next build
+   Γû▓ Next.js 15.3.2
+   - Environments: .env
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 4.0s
+   Linting and checking validity of types ...
+Failed to compile.
+
+.next/types/app/[locale]/(marketing)/[slug]/page.ts:34:29
+Type error: Type '{ params: { locale: string; slug: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ locale: string; slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+
+  32 |
+  33 | // Check the prop type of the entry function
+> 34 | checkFields<Diff<PageProps, FirstArg<TEntry['default']>, 'default'>>()
+     |                             ^
+  35 |
+  36 | // Check the arguments and return type of the generateMetadata function
+  37 | if ('generateMetadata' in entry) {
+Next.js build worker exited with code: 1 and signal: null
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+yarn run v1.22.22
+warning ..\package.json: No license field
+$ next dev
+   Γû▓ Next.js 15.3.2
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.50.99:3000
+   - Environments: .env
+
+ Γ£ô Starting...
+ Γ£ô Ready in 4.7s
+ Γ£ô Compiled /middleware in 139ms (129 modules)
+ Γùï Compiling /[locale]/[slug] ...
+ Γ£ô Compiled /[locale]/[slug] in 4s (4464 modules)
+Error: Route "/[locale]/[slug]" used `params.locale`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at LocaleLayout (app\[locale]\layout.tsx:38:14)
+  36 | export default async function LocaleLayout({
+  37 |     children,
+> 38 |     params: { locale }
+     |              ^
+  39 | }: {
+  40 |     children: React.ReactNode;
+  41 |     params: { locale: string };
+FetchContentTypeError TypeError: fetch failed
+    at async fetchContentType (lib\strapi\fetchContentType.ts:52:21)
+    at async LocaleLayout (app\[locale]\layout.tsx:44:21)
+  50 |
+  51 |     // Perform the fetch request with the provided query parameters
+> 52 |     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
+     |                     ^
+  53 |       method: 'GET',
+  54 |       cache: 'no-store',
+  55 |     }); {
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+}
+FetchContentTypeError TypeError: fetch failed
+    at async fetchContentType (lib\strapi\fetchContentType.ts:52:21)
+    at async Page (app\[locale]\(marketing)\[slug]\page.tsx:27:19)
+  50 |
+  51 |     // Perform the fetch request with the provided query parameters
+> 52 |     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
+     |                     ^
+  53 |       method: 'GET',
+  54 |       cache: 'no-store',
+  55 |     }); {
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+}
+ Γ¿» TypeError: Cannot read properties of undefined (reading 'map')
+    at LinkSection (components\footer.tsx:73:11)
+  71 | const LinkSection = ({ links, locale }: { links: { text: string; URL: never | string }[], locale: string }) => (
+  72 |   <div className="flex justify-center space-y-4 flex-col mt-4">
+> 73 |     {links.map((link) => (
+     |           ^
+  74 |       <Link
+  75 |         key={link.text}
+  76 |         className="transition-colors hover:text-neutral-400 text-muted text-xs sm:text-sm" {
+  digest: '1537393853'
+}
+ Γ¿» TypeError: Cannot read properties of undefined (reading 'map')
+    at LinkSection (components\footer.tsx:73:11)
+  71 | const LinkSection = ({ links, locale }: { links: { text: string; URL: never | string }[], locale: string }) => (
+  72 |   <div className="flex justify-center space-y-4 flex-col mt-4">
+> 73 |     {links.map((link) => (
+     |           ^
+  74 |       <Link
+  75 |         key={link.text}
+  76 |         className="transition-colors hover:text-neutral-400 text-muted text-xs sm:text-sm" {
+  digest: '1537393853'
+}
+ Γ¿» TypeError: Cannot read properties of undefined (reading 'map')
+    at LinkSection (components\footer.tsx:73:11)
+  71 | const LinkSection = ({ links, locale }: { links: { text: string; URL: never | string }[], locale: string }) => (
+  72 |   <div className="flex justify-center space-y-4 flex-col mt-4">
+> 73 |     {links.map((link) => (
+     |           ^
+  74 |       <Link
+  75 |         key={link.text}
+  76 |         className="transition-colors hover:text-neutral-400 text-muted text-xs sm:text-sm" {
+  digest: '1537393853'
+}
+FetchContentTypeError TypeError: fetch failed
+    at async fetchContentType (lib\strapi\fetchContentType.ts:52:21)
+    at async Module.generateMetadata (app\[locale]\layout.tsx:23:21)
+  50 |
+  51 |     // Perform the fetch request with the provided query parameters
+> 52 |     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
+     |                     ^
+  53 |       method: 'GET',
+  54 |       cache: 'no-store',
+  55 |     }); {
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+}
+FetchContentTypeError TypeError: fetch failed
+    at async fetchContentType (lib\strapi\fetchContentType.ts:52:21)
+    at async Module.generateMetadata (app\[locale]\(marketing)\[slug]\page.tsx:9:19)
+  50 |
+  51 |     // Perform the fetch request with the provided query parameters
+> 52 |     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
+     |                     ^
+  53 |       method: 'GET',
+  54 |       cache: 'no-store',
+  55 |     }); {
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+}
+FetchContentTypeError TypeError: fetch failed
+    at async fetchContentType (lib\strapi\fetchContentType.ts:52:21)
+    at async Module.generateMetadata (app\[locale]\layout.tsx:23:21)
+  50 |
+  51 |     // Perform the fetch request with the provided query parameters
+> 52 |     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
+     |                     ^
+  53 |       method: 'GET',
+  54 |       cache: 'no-store',
+  55 |     }); {
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+}
+FetchContentTypeError TypeError: fetch failed
+    at async fetchContentType (lib\strapi\fetchContentType.ts:52:21)
+    at async Module.generateMetadata (app\[locale]\(marketing)\[slug]\page.tsx:9:19)
+  50 |
+  51 |     // Perform the fetch request with the provided query parameters
+> 52 |     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
+     |                     ^
+  53 |       method: 'GET',
+  54 |       cache: 'no-store',
+  55 |     }); {
+  [cause]: [AggregateError: ] { code: 'ECONNREFUSED' }
+}
+ GET /en/faq 500 in 5094ms
+ Γùï Compiling /_not-found ...
+ Γ£ô Compiled /_not-found in 1004ms (4468 modules)
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 404 in 1103ms
+ Γ£ô Compiled /favicon.ico in 391ms (2345 modules)
+ GET /favicon.ico 200 in 3032ms
+ GET /favicon.ico 200 in 8ms
+ GET /favicon.ico 200 in 19ms
+Error: Route "/[locale]/[slug]" used `params.locale`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at LocaleLayout (app\[locale]\layout.tsx:38:14)
+  36 | export default async function LocaleLayout({
+  37 |     children,
+> 38 |     params: { locale }
+     |              ^
+  39 | }: {
+  40 |     children: React.ReactNode;
+  41 |     params: { locale: string };
+ GET /en/faq 200 in 677ms
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 404 in 17ms
+ GET /favicon.ico 200 in 8ms
+ GET /favicon.ico 200 in 6ms
+Error: Route "/[locale]/[slug]" used `params.locale`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at LocaleLayout (app\[locale]\layout.tsx:38:14)
+  36 | export default async function LocaleLayout({
+  37 |     children,
+> 38 |     params: { locale }
+     |              ^
+  39 | }: {
+  40 |     children: React.ReactNode;
+  41 |     params: { locale: string };
+ GET /en/faq 200 in 208ms
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 404 in 22ms
+ GET /favicon.ico 200 in 7ms
+ GET /favicon.ico 200 in 6ms
+ Γ£ô Compiled in 5.2s (4479 modules)
+ GET /en/faq 200 in 1947ms
+ Γ£ô Compiled /favicon.ico in 170ms (2344 modules)
+ GET /favicon.ico 200 in 2468ms
+ GET /en/faq 200 in 335ms
+ Γùï Compiling /favicon.ico ...
+ Γ£ô Compiled /favicon.ico in 731ms (4468 modules)
+ Γ£ô Compiled (4484 modules)
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 404 in 5739ms
+ GET /favicon.ico 200 in 5353ms
+ GET /favicon.ico 200 in 5ms
+ GET /en/faq 200 in 427ms
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 404 in 27ms
+ GET /favicon.ico 200 in 7ms
+ GET /favicon.ico 200 in 5ms
+ Γùï Compiling /_error ...
+ Γ£ô Compiled /_error in 1249ms (4817 modules)
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\[locale]\\(marketing)\\[slug]\\page.js',
+  page: '/en/faq'
+}
+ GET /en/faq 404 in 2036ms
+ GET /en/faq 500 in 1250ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 1290ms
+ Γ£ô Compiled /favicon.ico in 328ms (2432 modules)
+ GET /favicon.ico 200 in 436ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\[locale]\\(marketing)\\[slug]\\page.js',
+  page: '/en/faq'
+}
+ GET /en/faq 500 in 256ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 17ms
+ GET /favicon.ico 200 in 5ms
+ GET /en/faq 404 in 10ms
+ GET /en/faq 404 in 8ms
+ Γùï Compiling /[locale] ...
+ Γ£ô Compiled /[locale] in 1647ms (4820 modules)
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\favicon.ico\\route.js',
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 1685ms
+ Γ¿» Failed to generate static paths for /[locale]/[slug]:
+Error: Cannot find module './vendor-chunks/next.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\dev\static-paths-worker.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\compiled\jest-worker\processChild.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40) {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/faq 200 in 1325ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /_next/static/css/app/layout.css?v=1748189972807 500 in 53ms
+ GET /_next/static/css/app/%5Blocale%5D/layout.css?v=1748189972807 500 in 51ms
+ Γ¿» Error: Cannot find module './vendor-chunks/next.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\dev\static-paths-worker.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\compiled\jest-worker\processChild.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40) {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/en/faq'
+}
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\pages\\_document.js'
+}
+ GET /en/faq 500 in 299ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 19ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 28ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 33ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 32ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 38ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 37ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\favicon.ico\\route.js',
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 17ms
+ Γ¿» Error: Cannot find module './vendor-chunks/next.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\dev\static-paths-worker.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\compiled\jest-worker\processChild.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40) {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/en/faq'
+}
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\pages\_document.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\pages\\_document.js'
+}
+ GET /en/faq 500 in 273ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 21ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 23ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 19ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 22ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\_not-found\\page.js'
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 34ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 34ms
+ Γ¿» [Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\app\\favicon.ico\\route.js',
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 17ms
+ Γ£ô Compiled in 706ms (4835 modules)
+ Γ£ô Compiled in 534ms (2398 modules)
+ GET /favicon.ico 200 in 192ms
+ Γ£ô Compiled in 339ms (2398 modules)
+ Γ£ô Compiled in 635ms (2398 modules)
+ Γ£ô Compiled in 359ms (2398 modules)
+ Γ£ô Compiled in 353ms (2398 modules)
+ Γ£ô Compiled in 292ms (2398 modules)
+ Γ£ô Compiled in 686ms (4813 modules)
+ Γ£ô Compiled in 854ms (4813 modules)
+ Γ£ô Compiled /favicon.ico in 433ms (2431 modules)
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 481ms
+ Γ£ô Compiled in 1154ms (4813 modules)
+ Γ£ô Compiled in 410ms (2398 modules)
+ Γ£ô Compiled in 323ms (2398 modules)
+ Γ£ô Compiled in 307ms (2398 modules)
+ Γ£ô Compiled in 1375ms (4813 modules)
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:653:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:656:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js',
+  page: '/en/faq'
+}
+ Γ¿» Error: Cannot find module './548.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:339)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/faq 500 in 57ms
+ Γùï Compiling /_not-found ...
+ Γ£ô Compiled /_not-found in 603ms (4802 modules)
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:210:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:213:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js'
+}
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:210:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:213:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js'
+}
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:210:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:213:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js'
+}
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:210:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:213:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js'
+}
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:210:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:213:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js'
+}
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:198:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:111:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:110:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:162:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:210:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:213:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js'
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 733ms
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 683ms
+ GET /_next/static/chunks/fallback/main.js 500 in 683ms
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 672ms
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 166ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 165ms
+ Γ£ô Compiled /favicon.ico in 231ms (2432 modules)
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 264ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:1:10618)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:1:10675) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/en/faq'
+}
+ Γ¿» Error: Cannot find module './548.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:339)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/faq 500 in 95ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 47ms
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 44ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 22ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 22ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 34ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 34ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 16ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:1:10618)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:1:10675) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/en/faq'
+}
+ Γ¿» Error: Cannot find module './548.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:339)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/faq 500 in 34ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 24ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 20ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 22ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 24ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 32ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 31ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 19ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:1:10618)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:1:10675) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/en/faq'
+}
+ Γ¿» Error: Cannot find module './548.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:339)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/faq 500 in 33ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 20ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 21ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 21ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 21ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 33ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 32ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 14ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:1:10618)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\[slug]\page.js:1:10675) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/en/faq'
+}
+ Γ¿» Error: Cannot find module './548.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:339)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/faq 500 in 48ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 53ms
+ GET /_next/static/chunks/fallback/webpack.js 500 in 51ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 25ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 20ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 46ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 43ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 15ms
+ Γ£ô Compiled /[locale] in 469ms (2434 modules)
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js:653:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js:656:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js',
+  page: '/en'
+}
+ Γ¿» Error: Cannot find module './548.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:339)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en 500 in 526ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 22ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 32ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 23ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 23ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 35ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 35ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 15ms
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js:653:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js:656:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js',
+  page: '/en'
+}
+ Γ¿» Error: Cannot find module './548.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:339)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en 500 in 61ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 19ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 26ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 25ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 28ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 43ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 42ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 18ms
+ Γ¿» Error: ENOENT: no such file or directory, open 'D:\Projects\JOY\Rate\next\.next\server\vendor-chunks\next.js'
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js:653:47)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js:656:3) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\server\\vendor-chunks\\next.js',
+  page: '/en'
+}
+ Γ¿» Error: Cannot find module './548.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:339)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\pages\_document.js:1:381) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en 500 in 39ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /en/.well-known/appspecific/com.chrome.devtools.json 500 in 33ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/webpack.js 500 in 36ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/main.js 500 in 28ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/react-refresh.js 500 in 21ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4581)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\_not-found\page.js:1:4627) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /_next/static/chunks/fallback/pages/_app.js 500 in 42ms
+ GET /_next/static/chunks/fallback/pages/_error.js 500 in 41ms
+ Γ¿» Error: Cannot find module './243.js'
+Require stack:
+- D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js
+- D:\Projects\JOY\Rate\next\.next\server\app\[locale]\(marketing)\page.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\require.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\load-components.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\utils.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\options.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\swc\index.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\parse-module.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\build\analysis\get-page-static-info.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-utils\setup-dev-bundler.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\router-server.js
+- D:\Projects\JOY\Rate\next\node_modules\next\dist\server\lib\start-server.js
+    at __webpack_require__.f.require (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:203:28)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (D:\Projects\JOY\Rate\next\.next\server\webpack-runtime.js:167:22)
+    at <unknown> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63465)
+    at Object.<anonymous> (D:\Projects\JOY\Rate\next\.next\server\app\favicon.ico\route.js:1:63506) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array],
+  page: '/favicon.ico'
+}
+ GET /favicon.ico 500 in 18ms
+ Γ£ô Compiled in 3.2s (4813 modules)
+[Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\8.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\client-development\\8.pack.gz'
+}
+ Γ¿» unhandledRejection: [Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\8.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\client-development\\8.pack.gz'
+}
+ Γ¿» unhandledRejection:  [Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\8.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\client-development\\8.pack.gz'
+}
+[Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\13.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\client-development\\13.pack.gz'
+}
+ Γ¿» unhandledRejection: [Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\13.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\client-development\\13.pack.gz'
+}
+ Γ¿» unhandledRejection:  [Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\13.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\client-development\\13.pack.gz'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\8.pack.gz'
+[Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\server-development\14.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\server-development\\14.pack.gz'
+}
+ Γ¿» unhandledRejection: [Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\server-development\14.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\server-development\\14.pack.gz'
+}
+ Γ¿» unhandledRejection:  [Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\server-development\14.pack.gz'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\.next\\cache\\webpack\\server-development\\14.pack.gz'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, stat 'D:\Projects\JOY\Rate\next\.next\cache\webpack\server-development\14.pack.gz'
+ Γ£ô Compiled in 2.2s (4813 modules)
+ Γ£ô Compiled in 658ms (4813 modules)
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+ Γ¿» unhandledRejection: [Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+ Γ¿» unhandledRejection:  [Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+ Γ£ô Compiled in 429ms (2398 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\0.pack.gz_' -> 'D:\Projects\JOY\Rate\next\.next\cache\webpack\client-development\0.pack.gz'
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}

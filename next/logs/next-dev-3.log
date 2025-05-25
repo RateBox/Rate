@@ -1,0 +1,92 @@
+yarn run v1.22.22
+warning ..\package.json: No license field
+$ next build
+   Γû▓ Next.js 15.3.2
+   - Environments: .env
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 2000ms
+   Linting and checking validity of types ...
+Failed to compile.
+
+.next/types/app/[locale]/(marketing)/[slug]/page.ts:34:29
+Type error: Type '{ params: { locale: string; slug: string; }; }' does not satisfy the constraint 'PageProps'.
+  Types of property 'params' are incompatible.
+    Type '{ locale: string; slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+
+  32 |
+  33 | // Check the prop type of the entry function
+> 34 | checkFields<Diff<PageProps, FirstArg<TEntry['default']>, 'default'>>()
+     |                             ^
+  35 |
+  36 | // Check the arguments and return type of the generateMetadata function
+  37 | if ('generateMetadata' in entry) {
+Next.js build worker exited with code: 1 and signal: null
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+yarn run v1.22.22
+warning ..\package.json: No license field
+$ next dev
+ ΓÜá Port 3000 is in use, using available port 3002 instead.
+   Γû▓ Next.js 15.3.2
+   - Local:        http://localhost:3002
+   - Network:      http://192.168.50.99:3002
+   - Environments: .env
+
+ Γ£ô Starting...
+ Γ£ô Ready in 4.6s
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+ Γ¿» unhandledRejection: [Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+ Γ¿» unhandledRejection:  [Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+ Γ£ô Compiled /middleware in 148ms (129 modules)
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
+[Error: ENOENT: no such file or directory, scandir 'D:\Projects\JOY\Rate\next\pages'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'scandir',
+  path: 'D:\\Projects\\JOY\\Rate\\next\\pages'
+}
