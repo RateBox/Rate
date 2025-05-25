@@ -10,10 +10,19 @@
   "options": {
     "draftAndPublish": false
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "Name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "product": {
       "type": "relation",
@@ -28,13 +37,24 @@
       "mappedBy": "categories"
     },
     "description": {
-      "type": "blocks"
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "is_active": {
-      "type": "boolean"
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "Name"
     },
     "items": {
       "type": "relation",
@@ -62,7 +82,18 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "listing_type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::listing-type.listing-type",
+      "inversedBy": "categories"
     }
   }
 }

@@ -45,7 +45,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.0",
-    "strapi-plugin-locale-select": "file:../../Locale-Select/strapi-plugin-locale-select-2.0.48.tgz",
+    "strapi-plugin-locale-select": "^2.0.59",
     "styled-components": "^6.1.15",
     "uuid": "^10.0.0"
   },

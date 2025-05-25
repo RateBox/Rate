@@ -23,8 +23,7 @@
     "Code": {
       "type": "string",
       "required": true,
-      "unique": true,
-      "regex": "^[a-z0-9]+-[a-z]{2}$"
+      "unique": true
     },
     "Logo": {
       "type": "media",
