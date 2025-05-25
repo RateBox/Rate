@@ -59,12 +59,6 @@
         }
       }
     },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category",
-      "mappedBy": "listing_type"
-    },
     "is_Active": {
       "type": "boolean",
       "pluginOptions": {
@@ -72,6 +66,12 @@
           "localized": true
         }
       }
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "Listing_Type"
     }
   }
 }

@@ -547,7 +547,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    directory: Schema.Attribute.Relation<
+    Directory: Schema.Attribute.Relation<
       'manyToOne',
       'api::directory.directory'
     >;
@@ -563,8 +563,8 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    items: Schema.Attribute.Relation<'oneToMany', 'api::item.item'>;
-    listing_type: Schema.Attribute.Relation<
+    Items: Schema.Attribute.Relation<'oneToMany', 'api::item.item'>;
+    Listing_Type: Schema.Attribute.Relation<
       'manyToOne',
       'api::listing-type.listing-type'
     >;
@@ -606,26 +606,26 @@ export interface ApiDirectoryDirectory extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
-    categories: Schema.Attribute.Relation<
+    Categories: Schema.Attribute.Relation<
       'oneToMany',
       'api::category.category'
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks &
+    Description: Schema.Attribute.Blocks &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+    Icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    is_active: Schema.Attribute.Boolean &
+    is_Active: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -636,14 +636,14 @@ export interface ApiDirectoryDirectory extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::directory.directory'
     >;
-    name: Schema.Attribute.String &
+    Name: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'name'>;
+    Slug: Schema.Attribute.UID<'Name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -738,6 +738,42 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiIdentityIdentity extends Struct.CollectionTypeSchema {
+  collectionName: 'identities';
+  info: {
+    description: '';
+    displayName: 'Identity';
+    pluralName: 'identities';
+    singularName: 'identity';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Avatar: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::identity.identity'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Slug: Schema.Attribute.String;
+    Type: Schema.Attribute.Enumeration<['Individual', 'Organization']> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiItemPageItemPage extends Struct.SingleTypeSchema {
   collectionName: 'item_pages';
   info: {
@@ -821,16 +857,16 @@ export interface ApiItemItem extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
+    Category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
+    Description: Schema.Attribute.Blocks;
     dynamic_zone: Schema.Attribute.DynamicZone<
       ['dynamic-zone.related-products', 'dynamic-zone.cta']
     >;
-    featured: Schema.Attribute.Boolean;
-    gallery: Schema.Attribute.Media<
+    Featured: Schema.Attribute.Boolean;
+    Gallery: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
@@ -841,10 +877,10 @@ export interface ApiItemItem extends Struct.CollectionTypeSchema {
     maxPrice: Schema.Attribute.Decimal;
     minPrice: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
-    reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
-    slug: Schema.Attribute.UID;
-    thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    title: Schema.Attribute.String;
+    Reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
+    Slug: Schema.Attribute.UID;
+    Thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1882,6 +1918,7 @@ declare module '@strapi/strapi' {
       'api::directory.directory': ApiDirectoryDirectory;
       'api::faq.faq': ApiFaqFaq;
       'api::global.global': ApiGlobalGlobal;
+      'api::identity.identity': ApiIdentityIdentity;
       'api::item-page.item-page': ApiItemPageItemPage;
       'api::item.item': ApiItemItem;
       'api::listing-type.listing-type': ApiListingTypeListingType;

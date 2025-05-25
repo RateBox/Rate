@@ -11,21 +11,21 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "title": {
+    "Title": {
       "type": "string"
     },
-    "slug": {
+    "Slug": {
       "type": "uid"
     },
-    "category": {
+    "Category": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::category.category"
     },
-    "description": {
+    "Description": {
       "type": "blocks"
     },
-    "thumbnail": {
+    "Thumbnail": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -36,7 +36,7 @@
         "audios"
       ]
     },
-    "gallery": {
+    "Gallery": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -50,7 +50,7 @@
     "is_active": {
       "type": "boolean"
     },
-    "reviews": {
+    "Reviews": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::review.review"
@@ -68,7 +68,7 @@
         "dynamic-zone.cta"
       ]
     },
-    "featured": {
+    "Featured": {
       "type": "boolean"
     }
   }

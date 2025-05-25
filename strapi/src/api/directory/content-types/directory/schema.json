@@ -16,7 +16,7 @@
     }
   },
   "attributes": {
-    "name": {
+    "Name": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -24,11 +24,11 @@
         }
       }
     },
-    "slug": {
+    "Slug": {
       "type": "uid",
-      "targetField": "name"
+      "targetField": "Name"
     },
-    "description": {
+    "Description": {
       "type": "blocks",
       "pluginOptions": {
         "i18n": {
@@ -36,7 +36,7 @@
         }
       }
     },
-    "icon": {
+    "Icon": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -52,7 +52,7 @@
         }
       }
     },
-    "is_active": {
+    "is_Active": {
       "type": "boolean",
       "pluginOptions": {
         "i18n": {
@@ -60,11 +60,11 @@
         }
       }
     },
-    "categories": {
+    "Categories": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category",
-      "mappedBy": "directory"
+      "mappedBy": "Directory"
     }
   }
 }

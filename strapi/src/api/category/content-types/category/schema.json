@@ -56,16 +56,10 @@
       "type": "uid",
       "targetField": "Name"
     },
-    "items": {
+    "Items": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::item.item"
-    },
-    "directory": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::directory.directory",
-      "inversedBy": "categories"
     },
     "listings": {
       "type": "relation",
@@ -89,11 +83,17 @@
         }
       }
     },
-    "listing_type": {
+    "Listing_Type": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::listing-type.listing-type",
       "inversedBy": "categories"
+    },
+    "Directory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::directory.directory",
+      "inversedBy": "Categories"
     }
   }
 }
