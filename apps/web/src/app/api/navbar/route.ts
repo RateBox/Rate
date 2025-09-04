@@ -7,10 +7,9 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
     const queryString = searchParams.toString()
-    
-    // Forward request to Strapi
+
     const response = await fetch(
-      `${STRAPI_URL}/api/categories${queryString ? `?${queryString}` : ""}`,
+      `${STRAPI_URL}/api/navbar${queryString ? `?${queryString}` : ""}`,
       {
         headers: {
           ...(STRAPI_TOKEN && { Authorization: `Bearer ${STRAPI_TOKEN}` }),
@@ -22,17 +21,19 @@ export async function GET(request: NextRequest) {
 
     if (!response.ok) {
       return NextResponse.json(
-        { error: data.error || "Failed to fetch categories" },
+        { error: data.error || "Failed to fetch navbar" },
         { status: response.status }
       )
     }
 
     return NextResponse.json(data)
   } catch (error) {
-    console.error("Error fetching categories:", error)
+    console.error("Error fetching navbar:", error)
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
     )
   }
-} 
+}
+
+
