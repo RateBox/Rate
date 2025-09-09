@@ -1,5 +1,5 @@
-import { PublicStrapiClient } from '@/lib/strapi-api'
 import ListingDetailTemplateOne from "@/components/listing/ListingDetailTemplateOne"
+import { PublicStrapiClient } from "@/lib/strapi-api"
 
 type PageParams = Promise<{ locale: string; slug: string }>
 
@@ -21,7 +21,7 @@ function blocksToPlainText(blocks: any): string {
   }
 }
 
-export default async function ItemPage({ params }: { params: PageParams }) {
+export default async function ListingDetailPage({ params }: { params: PageParams }) {
   const { locale, slug } = await params
 
   const res = await PublicStrapiClient.fetchMany('api::item.item', {
@@ -42,7 +42,6 @@ export default async function ItemPage({ params }: { params: PageParams }) {
 
   const item = (res?.data as any[])?.[0]
   if (!item) {
-    // Next will render not-found route
     throw new Error('Item not found')
   }
 
@@ -55,15 +54,8 @@ export default async function ItemPage({ params }: { params: PageParams }) {
   }))
 
   const features = (item?.Features ?? []).map((f: any) => ({ label: f?.Label ?? f?.label ?? '' }))
-
-  const openingHours = (item?.OpeningHours ?? []).map((o: any) => ({
-    day: o?.Day ?? o?.day ?? '',
-    open: o?.Open ?? o?.open ?? null,
-    close: o?.Close ?? o?.close ?? null,
-  }))
-
+  const openingHours = (item?.OpeningHours ?? []).map((o: any) => ({ day: o?.Day ?? o?.day ?? '', open: o?.Open ?? o?.open ?? null, close: o?.Close ?? o?.close ?? null }))
   const menu = (item?.MenuItems ?? []).map((mi: any) => ({ name: mi?.Name ?? mi?.name ?? '', price: mi?.Price ?? mi?.price ?? null }))
-
   const social = (item?.SocialLinks ?? []).map((s: any) => ({ platform: s?.Platform ?? s?.platform ?? null, url: s?.Url ?? s?.url ?? '' }))
 
   return (
