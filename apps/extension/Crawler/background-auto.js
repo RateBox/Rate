@@ -153,16 +153,20 @@ async function submitShopeeReviewsToStrapi() {
       if (productData.hasNewData) {
         productsToSubmit.push(productUrl);
         
-        // Send ALL reviews (server will handle deduplication)
+        // Get only unsubmitted reviews
         const product = productData.product || {};
-        const allReviews = productData.reviews || [];
+        const submittedReviewIds = new Set(productData.submittedReviews || []);
+        const newReviews = (productData.reviews || []).filter(r => {
+          const reviewId = r.id || r.userId || (r.username + '|' + r.content);
+          return !submittedReviewIds.has(reviewId);
+        });
         
         // Create ONE item per product with all its reviews
-        if (allReviews.length > 0) {
+        if (newReviews.length > 0 || !productData.submittedReviews || productData.submittedReviews.length === 0) {
           items.push({
             product: {
               url: product.productUrl || productUrl,
-              title: product.productName || product.title || '', // productName is the field from content script
+              title: product.productName || product.title || '',
               description: product.description || '',
               price: product.priceVND || product.price || 0,
               currency: product.currency || 'VND',
@@ -188,7 +192,7 @@ async function submitShopeeReviewsToStrapi() {
               reviewCount: product.sellerReviewCount || 0
             },
             // Send ALL reviews as an array
-            reviews: allReviews.map(review => ({
+            reviews: newReviews.map(review => ({
               id: review.id || '',
               username: review.username || review.owner || '',
               content: review.content || review.comment || '',
@@ -201,9 +205,9 @@ async function submitShopeeReviewsToStrapi() {
             crawledAt: new Date().toISOString()
           });
           
-          console.log(`[Background] Created 1 item for product ${productUrl} with ${allReviews.length} reviews`);
+          console.log(`[Background] Created 1 item for product ${productUrl} with ${newReviews.length} reviews`);
         } else {
-          console.log(`[Background] Product ${productUrl} has no reviews to send`);
+          console.log(`[Background] Product ${productUrl} has no new reviews to send`);
         }
         
       }
@@ -252,20 +256,37 @@ async function submitShopeeReviewsToStrapi() {
     const result = await response.json();
     console.log('[Background] Strapi API response:', result);
     
-    // Clear new data flag after successful submission
+    // Mark reviews as submitted and clear new data flag
     if (result.success === true) {
       console.log('[Background] Marking products as submitted:', productsToSubmit);
       
       productsToSubmit.forEach(productUrl => {
         const productData = shopeeProductsDatabase[productUrl];
-        console.log(`[Background] Clearing hasNewData flag for ${productUrl}`);
+        console.log(`[Background] Before marking ${productUrl}:`, {
+          hasNewData: productData.hasNewData,
+          reviews: productData.reviews?.length,
+          submittedReviews: productData.submittedReviews?.length
+        });
         
-        // Just clear the new data flag, don't track submitted reviews
-        // This allows re-sending on next page load
+        // Mark all current reviews as submitted
+        productData.reviews.forEach(review => {
+          const reviewId = review.id || review.userId || (review.username + '|' + review.content);
+          if (!productData.submittedReviews) {
+            productData.submittedReviews = [];
+          }
+          if (!productData.submittedReviews.includes(reviewId)) {
+            productData.submittedReviews.push(reviewId);
+          }
+        });
+        
+        // Clear new data flag
         productData.hasNewData = false;
         
-        // Update last send time
-        lastAutoSendTime[productUrl] = Date.now();
+        console.log(`[Background] After marking ${productUrl}:`, {
+          hasNewData: productData.hasNewData,
+          reviews: productData.reviews?.length,
+          submittedReviews: productData.submittedReviews?.length
+        });
       });
       await saveAccumulatedData();
       
@@ -460,25 +481,34 @@ async function handleShopeeReviewsFound(message, sender) {
     const productEntry = shopeeProductsDatabase[productUrl];
     
     // Update product info (might have more complete data on subsequent loads)
-    // Keep existing product info, don't overwrite with undefined
-    // data is an array of reviews, each review contains product info
-    const productInfo = data[0]?.product;
-    if (productInfo && Object.keys(productInfo).length > 0) {
-      productEntry.product = productInfo; // Extract product info from first review
+    productEntry.product = data[0]?.product || productEntry.product;
+    
+    // Dedupe and add reviews
+    const existingReviewIds = new Set(productEntry.reviews.map(r => r.id || r.userId || ''));
+    const existingReviewContents = new Set(productEntry.reviews.map(r => 
+      (r.username || '') + '|' + (r.content || '') + '|' + (r.reviewVariant || '')
+    ));
+    
+    const newReviews = data.filter(review => {
+      const reviewId = review.id || review.userId || '';
+      const reviewKey = (review.username || '') + '|' + (review.content || '') + '|' + (review.reviewVariant || '');
+      
+      if (reviewId && existingReviewIds.has(reviewId)) return false;
+      if (existingReviewContents.has(reviewKey)) return false;
+      return true;
+    });
+    
+    let shouldScheduleSend = false;
+    
+    if (newReviews.length > 0) {
+      productEntry.reviews = [...productEntry.reviews, ...newReviews];
+      productEntry.lastUpdated = new Date().toISOString();
+      productEntry.hasNewData = true; // Mark as having new data to send
+      console.log(`[Background] Added ${newReviews.length} reviews to ${productUrl}, marked for sending`);
+      shouldScheduleSend = true;
+    } else {
+      console.log('[Background] No new reviews for product (reload/duplicate)');
     }
-    
-    // Always replace reviews with fresh data from page (don't accumulate)
-    // Server will handle deduplication
-    const freshReviews = data || [];
-    
-    // Replace all reviews with fresh data
-    productEntry.reviews = freshReviews;
-    productEntry.lastUpdated = new Date().toISOString();
-    productEntry.hasNewData = true; // Always mark as having new data when page loads
-    
-    console.log(`[Background] Loaded ${freshReviews.length} reviews for ${productUrl}, ready to send`);
-    
-    let shouldScheduleSend = true; // Always schedule send when we get data
     
     // Update total count
     totalShopeeReviews = Object.values(shopeeProductsDatabase).reduce(
@@ -488,16 +518,23 @@ async function handleShopeeReviewsFound(message, sender) {
     updateBadge();
     await saveAccumulatedData();
     
-    // AUTO-SEND LOGIC - Always send when page loads with data
-    if (shouldScheduleSend) {
+    // AUTO-SEND LOGIC
+    if (shouldScheduleSend || isNewProduct) {
+      const timeSinceFirstCrawl = Date.now() - (productEntry.firstCrawlTime || Date.now());
       const timeSinceLastSend = Date.now() - (lastAutoSendTime[productUrl] || 0);
       
-      // Prevent spam - wait at least 5 seconds between sends for same product
-      if (timeSinceLastSend > 5000) {
-        console.log('[Background] Scheduling auto-send in 5s to wait for page to fully load');
+      if (isNewProduct) {
+        // New product: send after 5 seconds
+        console.log('[Background] New product detected, scheduling auto-send in 5s');
         scheduleAutoSend(5000);
-      } else {
-        console.log(`[Background] Too soon to send again, last sent ${Math.round(timeSinceLastSend/1000)}s ago`);
+      } else if (newReviews.length > 0 && timeSinceLastSend > 10000) {
+        // Has new reviews and hasn't sent in 10s: send after 3 seconds
+        console.log('[Background] New reviews detected, scheduling auto-send in 3s');
+        scheduleAutoSend(3000);
+      } else if (productEntry.reviews.length >= 20) {
+        // Has many reviews: send immediately
+        console.log('[Background] Many reviews accumulated, sending immediately');
+        scheduleAutoSend(500);
       }
     }
     

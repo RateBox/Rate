@@ -75,55 +75,12 @@ chrome.runtime.onInstalled.addListener(() => {
   
   // Set initial badge
   updateBadge();
-  
-  // Check and send any pending data after startup
-  setTimeout(() => {
-    checkAndSendPendingData();
-  }, 5000); // Wait 5 seconds after install/update
 });
-
-// Also check on browser startup
-chrome.runtime.onStartup.addListener(() => {
-  console.log('[Background] Browser started');
-  
-  // Load existing data from storage
-  loadAccumulatedData();
-  
-  // Set initial badge  
-  updateBadge();
-  
-  // Check and send any pending data after startup
-  setTimeout(() => {
-    checkAndSendPendingData();
-  }, 5000); // Wait 5 seconds after browser startup
-});
-
-// Check and send any pending data
-async function checkAndSendPendingData() {
-  console.log('[Background] Checking for pending data to send...');
-  
-  // Check if we have any products with new data
-  const pendingProducts = Object.entries(shopeeProductsDatabase)
-    .filter(([url, data]) => data.hasNewData && data.reviews?.length > 0);
-  
-  if (pendingProducts.length > 0) {
-    console.log(`[Background] Found ${pendingProducts.length} products with pending data`);
-    
-    // Auto-send the pending data
-    try {
-      await autoSendPendingData();
-      console.log('[Background] Successfully sent pending data on startup');
-    } catch (error) {
-      console.error('[Background] Failed to send pending data on startup:', error);
-    }
-  } else {
-    console.log('[Background] No pending data to send');
-  }
-}
 
 // Submit Shopee reviews to Strapi Validation API
-async function submitShopeeReviewsToStrapi() {
+async function submitShopeeReviewsToStrapi(reviews) {
   console.log('[Background] Attempting to submit Shopee reviews to Strapi...');
+  console.log('[Background] Reviews count:', reviews?.length);
   
   // Ensure latest config
   await loadStrapiConfigAndApply();
@@ -138,12 +95,6 @@ async function submitShopeeReviewsToStrapi() {
   }
   
   try {
-    // Log current database state
-    console.log('[Background] Current products database:', Object.keys(shopeeProductsDatabase).length, 'products');
-    Object.entries(shopeeProductsDatabase).forEach(([url, data]) => {
-      console.log(`[Background] Product ${url}: hasNewData=${data.hasNewData}, reviews=${data.reviews?.length}, submitted=${data.submittedReviews?.length}`);
-    });
-    
     // Prepare items from products database
     const items = [];
     const productsToSubmit = [];
@@ -153,59 +104,82 @@ async function submitShopeeReviewsToStrapi() {
       if (productData.hasNewData) {
         productsToSubmit.push(productUrl);
         
-        // Send ALL reviews (server will handle deduplication)
+        // Get only unsubmitted reviews
         const product = productData.product || {};
-        const allReviews = productData.reviews || [];
+        const submittedReviewIds = new Set(productData.submittedReviews || []);
+        const newReviews = (productData.reviews || []).filter(r => {
+          const reviewId = r.id || r.userId || (r.username + '|' + r.content);
+          return !submittedReviewIds.has(reviewId);
+        });
         
-        // Create ONE item per product with all its reviews
-        if (allReviews.length > 0) {
+        // If we have new reviews, create one item per review
+        if (newReviews.length > 0) {
+          newReviews.forEach(review => {
+            items.push({
+              product: {
+                url: product.productUrl || productUrl,
+                title: product.productName || product.title || '',
+                description: product.description || '',
+                price: product.priceVND || product.price || 0,
+                currency: product.currency || 'VND',
+                category: Array.isArray(product.categories) ? product.categories.join(' > ') : (product.category || ''),
+                brand: product.brand || '',
+                images: product.images || [],
+                variants: product.variants || [],
+                stock: product.stock || 0,
+                shipFrom: product.shipFrom || '',
+                rating: product.rating || 0,
+                soldCount: product.soldCount || 0,
+                productReviewCount: product.productReviewCount || 0,
+                likedCount: product.likedCount || 0
+              },
+              seller: {
+                name: product.sellerName || '',
+                rating: product.sellerRating || 0,
+                responseRate: product.sellerResponseRate || '',
+                responseTime: product.sellerResponseTime || '',
+                joinSince: product.sellerJoinSince || '',
+                productCount: product.sellerProductCount || 0,
+                followerCount: product.sellerFollowerCount || 0,
+                reviewCount: product.sellerReviewCount || 0
+              },
+              review: {
+                id: review.id || '',
+                username: review.username || review.owner || '',
+                content: review.content || review.comment || '',
+                starRate: review.starRate || review.starCount || 0,
+                reviewVariant: review.reviewVariant || '',
+                criteria: review.criteria || {},
+                timestamp: review.timestamp || new Date().toISOString()
+              },
+              source: 'shopee_extension',
+              crawledAt: new Date().toISOString()
+            });
+          });
+        } else {
+          // No reviews, just submit product info
           items.push({
             product: {
               url: product.productUrl || productUrl,
-              title: product.productName || product.title || '', // productName is the field from content script
+              title: product.productName || product.title || '',
               description: product.description || '',
               price: product.priceVND || product.price || 0,
               currency: product.currency || 'VND',
               category: Array.isArray(product.categories) ? product.categories.join(' > ') : (product.category || ''),
               brand: product.brand || '',
               images: product.images || [],
-              variants: product.variants || [],
               stock: product.stock || 0,
-              shipFrom: product.shipFrom || '',
-              rating: product.rating || 0,
               soldCount: product.soldCount || 0,
-              productReviewCount: product.productReviewCount || 0,
-              likedCount: product.likedCount || 0
+              rating: product.rating || 0
             },
             seller: {
               name: product.sellerName || '',
-              rating: product.sellerRating || 0,
-              responseRate: product.sellerResponseRate || '',
-              responseTime: product.sellerResponseTime || '',
-              joinSince: product.sellerJoinSince || '',
-              productCount: product.sellerProductCount || 0,
-              followerCount: product.sellerFollowerCount || 0,
-              reviewCount: product.sellerReviewCount || 0
+              rating: product.sellerRating || 0
             },
-            // Send ALL reviews as an array
-            reviews: allReviews.map(review => ({
-              id: review.id || '',
-              username: review.username || review.owner || '',
-              content: review.content || review.comment || '',
-              starRate: review.starRate || review.starCount || 0,
-              reviewVariant: review.reviewVariant || '',
-              criteria: review.criteria || {},
-              timestamp: review.timestamp || new Date().toISOString()
-            })),
             source: 'shopee_extension',
             crawledAt: new Date().toISOString()
           });
-          
-          console.log(`[Background] Created 1 item for product ${productUrl} with ${allReviews.length} reviews`);
-        } else {
-          console.log(`[Background] Product ${productUrl} has no reviews to send`);
         }
-        
       }
     }
     
@@ -252,20 +226,24 @@ async function submitShopeeReviewsToStrapi() {
     const result = await response.json();
     console.log('[Background] Strapi API response:', result);
     
-    // Clear new data flag after successful submission
+    // Mark reviews as submitted and clear new data flag
     if (result.success === true) {
-      console.log('[Background] Marking products as submitted:', productsToSubmit);
-      
       productsToSubmit.forEach(productUrl => {
         const productData = shopeeProductsDatabase[productUrl];
-        console.log(`[Background] Clearing hasNewData flag for ${productUrl}`);
         
-        // Just clear the new data flag, don't track submitted reviews
-        // This allows re-sending on next page load
+        // Mark all current reviews as submitted
+        productData.reviews.forEach(review => {
+          const reviewId = review.id || review.userId || (review.username + '|' + review.content);
+          if (!productData.submittedReviews) {
+            productData.submittedReviews = [];
+          }
+          if (!productData.submittedReviews.includes(reviewId)) {
+            productData.submittedReviews.push(reviewId);
+          }
+        });
+        
+        // Clear new data flag
         productData.hasNewData = false;
-        
-        // Update last send time
-        lastAutoSendTime[productUrl] = Date.now();
       });
       await saveAccumulatedData();
       
@@ -310,29 +288,11 @@ async function loadAccumulatedData() {
     shopeeProductsDatabase = result.shopeeProductsDatabase || {};
     totalShopeeReviews = result.totalShopeeReviews || 0;
     
-    // Fix legacy data that doesn't have hasNewData field
-    Object.values(shopeeProductsDatabase).forEach(product => {
-      if (product.hasNewData === undefined) {
-        // If submittedReviews exists and equals reviews length, no new data
-        if (product.submittedReviews && product.submittedReviews.length === product.reviews?.length) {
-          product.hasNewData = false;
-        } else {
-          product.hasNewData = true;
-        }
-      }
-      
-    });
-    
     const productCount = Object.keys(shopeeProductsDatabase).length;
-    const newDataCount = Object.values(shopeeProductsDatabase).filter(p => p.hasNewData).length;
+    const submittedCount = Object.values(shopeeProductsDatabase).filter(p => p.submitted).length;
     
     console.log(`[Background] Loaded ${scamDatabase.length} accumulated scam records`);
-    console.log(`[Background] Loaded ${productCount} Shopee products (${newDataCount} with new data)`);
-    
-    // Debug each product
-    Object.entries(shopeeProductsDatabase).forEach(([url, data]) => {
-      console.log(`[Background] Product: ${url.substring(0, 50)}... hasNewData=${data.hasNewData}, reviews=${data.reviews?.length}`);
-    });
+    console.log(`[Background] Loaded ${productCount} Shopee products (${submittedCount} already submitted)`);
     updateBadge();
   } catch (error) {
     console.error('[Background] Error loading data:', error);
@@ -376,56 +336,6 @@ function updateBadge() {
   }
 }
 
-// Auto-send timer
-let autoSendTimer = null;
-let lastAutoSendTime = {};
-
-// Auto-send function
-async function autoSendPendingData() {
-  console.log('[Background] Checking for pending data to auto-send...');
-  
-  // Get products with new data
-  const productsToSend = Object.entries(shopeeProductsDatabase)
-    .filter(([url, data]) => data.hasNewData)
-    .map(([url]) => url);
-  
-  if (productsToSend.length === 0) {
-    console.log('[Background] No pending data to send');
-    return;
-  }
-  
-  console.log(`[Background] Auto-sending ${productsToSend.length} products...`);
-  
-  try {
-    const result = await submitShopeeReviewsToStrapi();
-    if (result.ok) {
-      console.log('[Background] Auto-send successful:', result);
-      
-      // Update last send time for each product
-      productsToSend.forEach(url => {
-        lastAutoSendTime[url] = Date.now();
-      });
-    }
-  } catch (error) {
-    console.error('[Background] Auto-send failed:', error);
-  }
-}
-
-// Schedule auto-send
-function scheduleAutoSend(delayMs = 5000) {
-  // Clear existing timer
-  if (autoSendTimer) {
-    clearTimeout(autoSendTimer);
-  }
-  
-  // Schedule new send
-  autoSendTimer = setTimeout(() => {
-    autoSendPendingData();
-  }, delayMs);
-  
-  console.log(`[Background] Scheduled auto-send in ${delayMs}ms`);
-}
-
 // Handle new Shopee reviews from content script
 async function handleShopeeReviewsFound(message, sender) {
   try {
@@ -443,16 +353,13 @@ async function handleShopeeReviewsFound(message, sender) {
     }
     
     // Create or update product entry
-    const isNewProduct = !shopeeProductsDatabase[productUrl];
-    
-    if (isNewProduct) {
+    if (!shopeeProductsDatabase[productUrl]) {
       shopeeProductsDatabase[productUrl] = {
         product: data[0]?.product || {},
         reviews: [],
         submittedReviews: [], // Track which reviews were already sent
         lastUpdated: new Date().toISOString(),
-        hasNewData: true, // Flag to track if there's new data to send
-        firstCrawlTime: Date.now()
+        hasNewData: true // Flag to track if there's new data to send
       };
       console.log('[Background] New product added:', productUrl);
     }
@@ -460,25 +367,31 @@ async function handleShopeeReviewsFound(message, sender) {
     const productEntry = shopeeProductsDatabase[productUrl];
     
     // Update product info (might have more complete data on subsequent loads)
-    // Keep existing product info, don't overwrite with undefined
-    // data is an array of reviews, each review contains product info
-    const productInfo = data[0]?.product;
-    if (productInfo && Object.keys(productInfo).length > 0) {
-      productEntry.product = productInfo; // Extract product info from first review
+    productEntry.product = data[0]?.product || productEntry.product;
+    
+    // Dedupe and add reviews
+    const existingReviewIds = new Set(productEntry.reviews.map(r => r.id || r.userId || ''));
+    const existingReviewContents = new Set(productEntry.reviews.map(r => 
+      (r.username || '') + '|' + (r.content || '') + '|' + (r.reviewVariant || '')
+    ));
+    
+    const newReviews = data.filter(review => {
+      const reviewId = review.id || review.userId || '';
+      const reviewKey = (review.username || '') + '|' + (review.content || '') + '|' + (review.reviewVariant || '');
+      
+      if (reviewId && existingReviewIds.has(reviewId)) return false;
+      if (existingReviewContents.has(reviewKey)) return false;
+      return true;
+    });
+    
+    if (newReviews.length > 0) {
+      productEntry.reviews = [...productEntry.reviews, ...newReviews];
+      productEntry.lastUpdated = new Date().toISOString();
+      productEntry.hasNewData = true; // Mark as having new data to send
+      console.log(`[Background] Added ${newReviews.length} reviews to ${productUrl}, marked for sending`);
+    } else {
+      console.log('[Background] No new reviews for product (reload/duplicate)');
     }
-    
-    // Always replace reviews with fresh data from page (don't accumulate)
-    // Server will handle deduplication
-    const freshReviews = data || [];
-    
-    // Replace all reviews with fresh data
-    productEntry.reviews = freshReviews;
-    productEntry.lastUpdated = new Date().toISOString();
-    productEntry.hasNewData = true; // Always mark as having new data when page loads
-    
-    console.log(`[Background] Loaded ${freshReviews.length} reviews for ${productUrl}, ready to send`);
-    
-    let shouldScheduleSend = true; // Always schedule send when we get data
     
     // Update total count
     totalShopeeReviews = Object.values(shopeeProductsDatabase).reduce(
@@ -488,20 +401,7 @@ async function handleShopeeReviewsFound(message, sender) {
     updateBadge();
     await saveAccumulatedData();
     
-    // AUTO-SEND LOGIC - Always send when page loads with data
-    if (shouldScheduleSend) {
-      const timeSinceLastSend = Date.now() - (lastAutoSendTime[productUrl] || 0);
-      
-      // Prevent spam - wait at least 5 seconds between sends for same product
-      if (timeSinceLastSend > 5000) {
-        console.log('[Background] Scheduling auto-send in 5s to wait for page to fully load');
-        scheduleAutoSend(5000);
-      } else {
-        console.log(`[Background] Too soon to send again, last sent ${Math.round(timeSinceLastSend/1000)}s ago`);
-      }
-    }
-    
-    // Notify popup (if exists)
+    // Notify popup
     try { chrome.runtime.sendMessage({ type: 'data-updated' }); } catch (e) {}
     
   } catch (error) {
@@ -516,8 +416,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   // New: Handle submit reviews to Strapi
   if (message.type === 'submit_shopee_reviews_to_strapi') {
     console.log('[Background] Handling submit_shopee_reviews_to_strapi');
-    // Note: We don't use message.reviews anymore, we use shopeeProductsDatabase
-    submitShopeeReviewsToStrapi()
+    submitShopeeReviewsToStrapi(message.reviews)
       .then(result => {
         console.log('[Background] Submit success:', result);
         sendResponse({ success: true, result });
@@ -588,29 +487,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       break;
       
     case 'get-shopee-reviews':
-      console.log('[Background] Getting Shopee reviews for popup');
-      console.log('[Background] Products in database:', Object.keys(shopeeProductsDatabase).length);
-      
-      // Log full database for debugging
-      console.log('[Background] Full database state:');
-      Object.entries(shopeeProductsDatabase).forEach(([url, data]) => {
-        console.log(`[Background] ${url}:`, {
-          hasNewData: data.hasNewData,
-          reviews: data.reviews?.length,
-          submittedReviews: data.submittedReviews?.length,
-          firstReview: data.reviews?.[0]?.username || 'none'
-        });
-      });
-      
       // Convert products database to flat reviews array for compatibility
       const allReviews = [];
       Object.values(shopeeProductsDatabase).forEach(productData => {
-        console.log('[Background] Processing product for review extraction:', { 
-          hasNewData: productData.hasNewData, 
-          reviews: productData.reviews?.length,
-          submittedReviews: productData.submittedReviews?.length 
-        });
-        
         if (productData.hasNewData) {
           // Only show new reviews that haven't been submitted
           const submittedReviewIds = new Set(productData.submittedReviews || []);
@@ -629,7 +508,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       sendResponse({
         data: allReviews,
         totalShopeeReviews: allReviews.length,
-        productsCount: Object.values(shopeeProductsDatabase).filter(p => p.hasNewData).length,
+        productsCount: Object.keys(shopeeProductsDatabase).filter(url => !shopeeProductsDatabase[url].submitted).length,
         lastUpdated: new Date().toISOString()
       });
       break;
@@ -692,7 +571,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 // Export Shopee reviews as JSON
 async function exportShopeeReviews() {
   const unsubmittedProducts = Object.entries(shopeeProductsDatabase)
-    .filter(([url, data]) => data.hasNewData);
+    .filter(([url, data]) => !data.submitted);
     
   if (unsubmittedProducts.length === 0) {
     console.log('[Background] No unsubmitted products to export');
@@ -745,10 +624,7 @@ async function exportShopeeReviews() {
 
 // Clear all Shopee reviews
 async function clearShopeeReviews() {
-  // Clear ALL products completely for fresh start
-  shopeeProductsDatabase = {};
-  
-  /* Old logic - kept for reference
+  // Clear products with new data
   Object.keys(shopeeProductsDatabase).forEach(url => {
     const product = shopeeProductsDatabase[url];
     if (product.hasNewData) {
@@ -762,7 +638,6 @@ async function clearShopeeReviews() {
       );
     }
   });
-  */
   
   totalShopeeReviews = Object.values(shopeeProductsDatabase).reduce(
     (sum, product) => sum + product.reviews.length, 0
